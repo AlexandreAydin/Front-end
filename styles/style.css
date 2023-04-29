@@ -303,3 +303,85 @@ a{
 }
 
 /* Products end */
+
+
+/* About Start */
+.about .row {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+}
+
+.about .row .image {
+    flex:1 1 45rem;
+}
+
+.about .row img{
+  width: 100%;
+}
+
+.about .row .content{
+    flex:1 1 45rem;
+}
+
+.about .row .content h3{
+    font-size: 3rem;
+    color: #fff;
+}
+
+.about .row .content p{
+    font-size: 1.6rem;
+    color: #ccc;
+    padding: 1rem 0;
+    line-height: 1.8;
+}
+/* About end */
+
+
+/* Review  start  */
+.review .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem, 1fr));
+    gap:1.5rem
+}
+
+.review .box-container .box{
+    border: var(--border);
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: #fff;
+    border-radius: 3rem;
+}
+
+.review .box-container .box p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    padding: 2rem 0;
+}
+
+.review .box-container .box .user{
+    height: 9rem;
+    width: 9rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.review .box-container .box h3{
+    padding: 1rem 0 ;
+    font-size: 2rem;
+    color: var(--main-color);
+}
+
+.review .box-container .box .stars i{
+    font-size: 1.5rem;
+    color: gold;
+}
+
+/* Review  end  */
+/* Contact  start */
+/* Contact send  */
+/* Blogs sstart  */
+/* Blogs  end  */
+/* footer  start */
+/* footer end */
