@@ -78,6 +78,14 @@ a{
     text-transform: uppercase;
 }
 
+.search-input{
+    font-size: 1.6rem;
+    color: var(--black-color);
+    padding:1rem;
+    text-transform: none;
+    border-radius: 30rem;
+}
+
 /* header start */
 .header{
     background-color: white;
@@ -497,4 +505,81 @@ a{
 
 /* Blogs  end  */
 /* footer  start */
+
+.footer{
+    background-color: var(--black-color);
+    text-align: center;
+}
+
+.footer .search{
+    display: flex;
+    justify-content: center;
+}
+
+.footer .search .serach-input{
+    width: 30rem;
+}
+
+.footer .search .btn{
+    background-color: var(--main-color);
+    padding: 1rem 2rem;
+    margin-left: 1rem;
+}
+
+.footer .share{
+    padding: 2rem 0;
+}
+
+.footer .share a {
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    color:#fff;
+    font-size: 2rem;
+    border:var(--border);
+    border-radius:50%;
+    margin:0.3;
+}
+
+.footer .share a:hover{
+    background-color: var(--main-color);
+}
+
+.footer .links{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer .links a {
+    background-color: var(--main-color);
+    padding: 0.7rem 2rem;
+    color:#fff;
+    font-size: 2rem;
+    border: var(--border);
+}
+
+.footer .links a:hover{
+    background-color: var(--black-color);
+
+}
+
+.footer .links a.active{
+    background-color: var(--black-color);
+
+}
+
+.footer .credit{
+    font-size: 2rem;
+    color:#fff;
+    font-weight: 300;
+    padding-top: 1.5rem;
+}
+
+.footer .credit span{
+    color:var(--main-color)
+}
+
+
 /* footer end */
