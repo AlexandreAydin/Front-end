@@ -10,20 +10,156 @@
 </head>
 <body>
 
-    <!-- Aligner des text -->
-    <!-- text-center pour centrer 
-    text-end pour aligner à droite
-    text-start pour aligner à gauche -->
 
-
-
-
-    <div class="bg-primary mx-5  pt-3 pb-4 px-2 text-white text-center">
-
+    <div class="bg-primary mx-5  pt-3 pb-4 px-2 text-white text-md-end text-left ">
         hello word
-
-
     </div>
+
+    <!-- 
+        pour faire du responsive 
+        Break points
+        xs : 0 -576px   exemple : text-xs-end 
+        sm : >= 576px
+        md : >= 768px
+        lg : >= 992px
+        xl : >= 1200px
+        xxl: >= 1400px
+    -->
+
+<!-- Notions intermédiaires
+Les "breakpoints" -->
+
+
+
+
+<!-- Aligner du texte -->
+
+<div class="text-start"></div>
+<div class="text-center"></div>
+<div class="text-end"></div>
+ 
+<div class="text-md-center text-sm-end text-center"></div>
+
+
+<!-- Transformer du texte -->
+
+<p class="text-lowercase">tout est en minuscule.</p>
+<p class="text-uppercase">TOUT EST EN MAJUSCULE.</p>
+<p class="text-capitalize">Tout Nouveau Mot Commence Par Une Majuscule.</p>
+
+
+<!-- Gérer le text-decoration -->
+
+<a class="text-decoration-line-through">Texte barré</a>
+<a class="text-decoration-underline">Texte souligné</a>
+<a class="text-decoration-none">Texte sans surlignement</a>
+
+
+<!-- Mettre en forme -->
+
+<p class="fw-bold">Texte en gras.</p>
+<p class="fw-bolder">Texte très gras.</p>
+<p class="fw-normal">Texte sans gras.</p>
+<p class="fw-light">Texte léger.</p>
+<p class="fw-lighter">Texte très léger.</p>
+<p class="fst-italic">Texte en italique.</p>
+<p class="fst-normal">Texte sans italique.</p>
+
+
+<!-- Gérer les polices -->
+
+<p class="h1">Titre principal</p> <!-- h1, h2, h3, ... h6 -->
+<h1 class="display-1">Titre principal</h1> <!-- display-1 ... display-6 -->
+  
+<!-- Pour les descriptions --> 
+<p class="lead">
+    <!-- Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus. -->
+</p>
+
+
+<!-- Gérer les ombres -->
+
+<div class="shadow-none">Aucune ombre ici.</div>
+<div class="shadow-sm">Petite ombre légère.</div>
+<div class="shadow">Ombre par défaut</div>
+<div class="shadow-lg">Ombre plutôt large</div>
+
+
+<!-- Gérer les bordures -->
+
+<span class="border"></span>
+<span class="border-top"></span>
+<span class="border-end"></span>
+<span class="border-bottom"></span>
+<span class="border-start"></span>
+ 
+<span class="border-0"></span>
+<span class="border-top-0"></span>
+<span class="border-end-0"></span>
+<span class="border-bottom-0"></span>
+<span class="border-start-0"></span>
+ 
+<span class="border border-primary"></span>
+<span class="border border-secondary"></span>
+<span class="border border-success"></span>
+<span class="border border-danger"></span>
+<span class="border border-warning"></span>
+<span class="border border-info"></span>
+<span class="border border-light"></span>
+<span class="border border-dark"></span>
+<span class="border border-white"></span>
+
+
+<!-- Gérer les bordures arrondies -->
+
+<img src="..." class="rounded" alt="...">
+<img src="..." class="rounded-top" alt="...">
+<img src="..." class="rounded-end" alt="...">
+<img src="..." class="rounded-bottom" alt="...">
+<img src="..." class="rounded-start" alt="...">
+<img src="..." class="rounded-circle" alt="...">
+<img src="..." class="rounded-pill" alt="...">
+<img src="..." class="rounded-0" alt="...">
+ 
+<img src="..." class="rounded-sm" alt="...">
+<img src="..." class="rounded-lg" alt="...">
+
+
+<!-- Gérer les positions / flottants -->
+
+<div class="position-static">...</div>
+<div class="position-relative">...</div>
+<div class="position-absolute">...</div>
+<div class="position-fixed">...</div>
+<div class="position-sticky">...</div>
+ 
+<div class="float-start">...</div>
+<div class="float-end">...</div>
+<div class="float-none">...</div>
+ 
+<div class="float-md-end">...</div> <!-- Sera aligné en tant que flottant, à droite, jusqu'au breakpoint md -->
+
+
+<!-- Rendre les iframes responsive -->
+
+<div class="ratio ratio-16x9">
+    <iframe allowfullscreen src="https://www.youtube.com/embed/lXgLyCYuYA4"></iframe>
+</div>
+ 
+<!-- 
+    Formats
+        - ratio-1x1
+        - ratio-16x9
+        - ratio-4x3
+        - ratio-21x9
+-->
+
+
+<!-- Permettre la sélection -->
+
+<p class="user-select-all">Le paragraphe sera sélectionné quand cliqué par l'utilisateur.</p>
+<p class="user-select-auto">Le paragraphe a un comportement normal.</p>
+<p class="user-select-none">Le paragraphe n'est pas sélectionnable.</p>
 
 </body>
 </html>
