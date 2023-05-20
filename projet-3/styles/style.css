@@ -213,6 +213,14 @@ movie list css start
     display: flex;
     align-items: center;
     column-gap: 30px;
+    position: relative;
+    transform: translateX(0);
+    transition: 1s all ease-in-out;
+}
+
+.movie-list-wrapper{
+    overflow: hidden;
+    position: relative;
 }
 
 .movie-item{
@@ -272,6 +280,22 @@ movie list css start
 }
 
 .movie-item-buttons i:hover{
+    opacity: 1;
+}
+
+.arrow{
+    width: 100px;
+    display: flex;
+    font-size: 120px;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    opacity: .5;  
+    transition: .5s ease all ;
+    cursor: pointer;
+}
+
+.arrow:hover {
     opacity: 1;
 }
 /* 
