@@ -356,9 +356,9 @@
 
 
 
-/**
-* ! 32. Découvrir le State et son utilité dans React Native
-*/
+// /**
+// * ! 32. Découvrir le State et son utilité dans React Native
+// */
 
 
 
@@ -693,65 +693,155 @@
 
 
 
-/**
-* ! 39. Composant FlatList
-*
-*/
+// /**
+// * ! 39. Composant FlatList
+// *
+// */
 
 
-import React, { useState } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+// import React, { useState } from "react";
+// import { View, Text, StyleSheet, FlatList } from "react-native";
 
 
   
-export default function App() {
+// export default function App() {
 
-  const obj = [
-    {id:"1", name:"Stan",age: 45},
-    {id:"2", name:"Elodie",age: 45},
-    {id:"3", name:"Elenora",age: 18},
-    {id:"4", name:"Elizabeth",age: 14},
-    {id:"5", name:"jean",age: 1020},
-    {id:"6", name:"Pierre",age: 30},
-    {id:"7", name:"José",age: 32},
-    {id:"8", name:"Fabien",age: 54},
-  ]
+//   const obj = [
+//     {id:"1", name:"Stan",age: 45},
+//     {id:"2", name:"Elodie",age: 45},
+//     {id:"3", name:"Elenora",age: 18},
+//     {id:"4", name:"Elizabeth",age: 14},
+//     {id:"5", name:"jean",age: 1020},
+//     {id:"6", name:"Pierre",age: 30},
+//     {id:"7", name:"José",age: 32},
+//     {id:"8", name:"Fabien",age: 54},
+//   ]
 
-  const [ family, setFamily] = useState (obj);
+//   const [ family, setFamily] = useState (obj);
 
-  const renderItem=({item}) => (
-    <View  style={styles.viewList}>
-        <Text style={styles.text}>
-          <Text>Nom:</Text>
-          {item.name}
-        </Text>
-        <Text style={styles.text}>
-          <Text>Age:</Text>
-          {item.age}
-        </Text>
-    </View>
-  );
+//   const renderItem=({item}) => (
+//     <View  style={styles.viewList}>
+//         <Text style={styles.text}>
+//           <Text>Nom:</Text>
+//           {item.name}
+//         </Text>
+//         <Text style={styles.text}>
+//           <Text>Age:</Text>
+//           {item.age}
+//         </Text>
+//     </View>
+//   );
 
-  return (
-    <View style={styles.wrapper}>
-      <FlatList
-        data={family}
-        renderItem={renderItem}
-        keyExtractor={item=> item.id}
-      />
-    </View>
-    )
-  }
+//   return (
+//     <View style={styles.wrapper}>
+//       <FlatList
+//         data={family}
+//         renderItem={renderItem}
+//         keyExtractor={item=> item.id}
+//       />
+//     </View>
+//     )
+//   }
       
   
 
 
+// const styles = StyleSheet.create({
+//     wrapper:{padding:20},
+//     viewList:{
+//       marginTop: 30,
+//       backgroundColor: "purple",
+//       padding: 20,
+//     },
+//     text:{color:'#fff'}
+// })
+
+
+
+
+
+
+
+
+/**
+* ! 40. Application Shopping List - Partie 1 
+* ! 41. Application Shopping List - Partie 2
+* ! 42. Application Shopping List - Partie 3 
+* ! 43. Application Shopping List - Partie 4 
+* ! 44. Application Shopping List - Partie 5
+* ! 45. Application Shopping List - Partie 6 
+*/
+
+
+import React, {useState} from "react";
+import { View, Text,StyleSheet, TextInput, Button, FlatList } from "react-native";
+
+
+  
+export default function App() {
+  
+  const [product, setProduct] = useState('');
+  const [myProducts, setMyProducts] = useState([]);
+
+  const inputHandler = (val) => {
+    setProduct(val)
+  }
+
+  const submitHandler = () => {
+    const idString = Date.now().toString();
+    setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
+    setProduct('');
+  }
+
+    return(
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Nouveau produit"
+            onChangeText={ inputHandler }
+            value={product}
+          />
+          <Button
+            title="valider"
+            onPress={submitHandler}
+          />
+        </View>
+
+
+        <FlatList
+          data={myProducts}
+          renderItem={({item}) => <Text style={styles.element} >{item.name}</Text>}
+        />
+      </View>
+    );
+  }
+      
+
 const styles = StyleSheet.create({
-    wrapper:{padding:20},
-    viewList:{
-      marginTop: 30,
-      backgroundColor: "purple",
-      padding: 20,
-    },
-    text:{color:'#fff'}
-})
+  container:{
+    padding: 40,
+    paddingTop:60,
+  },
+  inputContainer:{
+    flexDirection:"row",
+    marginBottom: 9,
+  },
+  textInput:{
+    borderColor: "grey",
+    borderWidth: 1,
+    padding:5,
+    paddingLeft:9,
+    fontSize:18,
+    flexGrow:1,
+  },
+  productItems:{
+    marginTop: 10
+  },
+  element:{
+    backgroundColor: '#ffb6c1',
+    padding: 20,
+    fontSize:17,
+    marginVertical: 6,
+  }
+});
