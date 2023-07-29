@@ -763,55 +763,132 @@
 
 
 
+// /**
+// * ! 40. Application Shopping List - Partie 1 
+// * ! 41. Application Shopping List - Partie 2
+// * ! 42. Application Shopping List - Partie 3 
+// * ! 43. Application Shopping List - Partie 4 
+// * ! 44. Application Shopping List - Partie 5
+// * ! 45. Application Shopping List - Partie 6 
+// */
+
+
+// import React, {useState} from "react";
+// import { View, Text,StyleSheet, TextInput, Button, FlatList } from "react-native";
+
+
+  
+// export default function App() {
+  
+//   const [product, setProduct] = useState('');
+//   const [myProducts, setMyProducts] = useState([]);
+
+//   const inputHandler = (val) => {
+//     setProduct(val)
+//   }
+
+//   const submitHandler = () => {
+//     const idString = Date.now().toString();
+//     setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
+//     setProduct('');
+//   }
+
+//     return(
+//       <View style={styles.container}>
+//         <View style={styles.inputContainer}>
+//           <TextInput
+//             style={styles.textInput}
+//             placeholder="Nouveau produit"
+//             onChangeText={ inputHandler }
+//             value={product}
+//           />
+//           <Button
+//             title="valider"
+//             onPress={submitHandler}
+//           />
+//         </View>
+
+
+//         <FlatList
+//           data={myProducts}
+//           renderItem={({item}) => <Text style={styles.element} >{item.name}</Text>}
+//         />
+//       </View>
+//     );
+//   }
+      
+
+// const styles = StyleSheet.create({
+//   container:{
+//     padding: 40,
+//     paddingTop:60,
+//   },
+//   inputContainer:{
+//     flexDirection:"row",
+//     marginBottom: 9,
+//   },
+//   textInput:{
+//     borderColor: "grey",
+//     borderWidth: 1,
+//     padding:5,
+//     paddingLeft:9,
+//     fontSize:18,
+//     flexGrow:1,
+//   },
+//   productItems:{
+//     marginTop: 10
+//   },
+//   element:{
+//     backgroundColor: '#ffb6c1',
+//     padding: 20,
+//     fontSize:17,
+//     marginVertical: 6,
+//   }
+// });
+
+
+
+
+
+
+
+
+
+
 /**
-* ! 40. Application Shopping List - Partie 1 
-* ! 41. Application Shopping List - Partie 2
-* ! 42. Application Shopping List - Partie 3 
-* ! 43. Application Shopping List - Partie 4 
-* ! 44. Application Shopping List - Partie 5
-* ! 45. Application Shopping List - Partie 6 
+* ! 46. Passer de la data entre les composants
+* ! 47. Passer de la data entre les composants
+* ! 48. Passer de la data entre les composants
+* ! 49. Passer de la data entre les composants
 */
 
 
 import React, {useState} from "react";
-import { View, Text,StyleSheet, TextInput, Button, FlatList } from "react-native";
+import { View,StyleSheet, FlatList } from "react-native";
+import Products from "./components/Product";
+import AddPoduct from "./components/AddProduct";
 
 
   
 export default function App() {
   
-  const [product, setProduct] = useState('');
   const [myProducts, setMyProducts] = useState([]);
 
-  const inputHandler = (val) => {
-    setProduct(val)
-  }
-
-  const submitHandler = () => {
+  const submitHandler = (product) => {
     const idString = Date.now().toString();
     setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
-    setProduct('');
+  
   }
 
     return(
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Nouveau produit"
-            onChangeText={ inputHandler }
-            value={product}
-          />
-          <Button
-            title="valider"
-            onPress={submitHandler}
-          />
-        </View>
+        <AddPoduct submitHandler={submitHandler}/>
+        
 
 
         <FlatList
           data={myProducts}
-          renderItem={({item}) => <Text style={styles.element} >{item.name}</Text>}
+          renderItem={({item}) => <Products name= {item.name}/>}
         />
       </View>
     );
@@ -823,25 +900,4 @@ const styles = StyleSheet.create({
     padding: 40,
     paddingTop:60,
   },
-  inputContainer:{
-    flexDirection:"row",
-    marginBottom: 9,
-  },
-  textInput:{
-    borderColor: "grey",
-    borderWidth: 1,
-    padding:5,
-    paddingLeft:9,
-    fontSize:18,
-    flexGrow:1,
-  },
-  productItems:{
-    marginTop: 10
-  },
-  element:{
-    backgroundColor: '#ffb6c1',
-    padding: 20,
-    fontSize:17,
-    marginVertical: 6,
-  }
 });
