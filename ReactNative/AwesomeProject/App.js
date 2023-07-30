@@ -855,16 +855,143 @@
 
 
 
+// /**
+// * ! 46. Passer de la data entre les composants
+// * ! 47. Passer de la data entre les composants
+// * ! 48. Passer de la data entre les composants
+// * ! 49. Passer de la data entre les composants
+// */
+
+
+// import React, {useState} from "react";
+// import { View,StyleSheet, FlatList } from "react-native";
+// import Products from "./components/Product";
+// import AddPoduct from "./components/AddProduct";
+
+
+  
+// export default function App() {
+  
+//   const [myProducts, setMyProducts] = useState([]);
+
+//   const submitHandler = (product) => {
+//     const idString = Date.now().toString();
+//     setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
+  
+//   }
+
+//   const deleteProduct = (key) => {
+//     setMyProducts(currentMyProducts => {
+//       return currentMyProducts.filter(product=> product.key != key)
+//     } )
+//   }
+
+//     return(
+//       <View style={styles.container}>
+//         <AddPoduct submitHandler={submitHandler}/>
+
+//         <FlatList
+//           data={myProducts}
+//           renderItem={({item}) => <Products name= {item.name}/>}
+//         />
+//       </View>
+//     );
+//   }
+      
+
+// const styles = StyleSheet.create({
+//   container:{
+//     padding: 40,
+//     paddingTop:60,
+//   },
+// });
+
+
+
+
+
+
+
+
+
+// /**
+// * ! 54. supprimer un prduit
+// * ! 55. Afficher une simple alerte
+// */
+
+
+// import React, {useState} from "react";
+// import { View,StyleSheet, FlatList } from "react-native";
+// import Products from "./components/Product";
+// import AddPoduct from "./components/AddProduct";
+
+
+  
+// export default function App() {
+  
+//   const [myProducts, setMyProducts] = useState([]);
+
+//   const submitHandler = (product) => {
+//     if(product.length > 1 ) {
+//     const idString = Date.now().toString();
+//     setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
+//     }else{
+//       alert('refuser')
+//     }
+//   }
+
+//   const deleteProduct = (key) => {
+//     setMyProducts(currentMyProducts => {
+//       return currentMyProducts.filter(product=> product.key != key)
+//     } )
+//   }
+
+//     return(
+//       <View style={styles.container}>
+//         <AddPoduct submitHandler={submitHandler}/>
+
+//         <FlatList
+//           data={myProducts}
+//           renderItem={({item}) => (
+//             <Products 
+//               name= {item.name}
+//               idString={item.key}
+//               deleteProduct={deleteProduct}
+//               />)}
+//         />
+//       </View>
+//     );
+//   }
+      
+
+// const styles = StyleSheet.create({
+//   container:{
+//     padding: 40,
+//     paddingTop:60,
+//   },
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
-* ! 46. Passer de la data entre les composants
-* ! 47. Passer de la data entre les composants
-* ! 48. Passer de la data entre les composants
-* ! 49. Passer de la data entre les composants
+* ! 56. API Alert de React Native 
 */
 
 
 import React, {useState} from "react";
-import { View,StyleSheet, FlatList } from "react-native";
+import { View,StyleSheet, FlatList,Alert } from "react-native";
 import Products from "./components/Product";
 import AddPoduct from "./components/AddProduct";
 
@@ -875,20 +1002,47 @@ export default function App() {
   const [myProducts, setMyProducts] = useState([]);
 
   const submitHandler = (product) => {
+    if(product.length > 1 ) {
     const idString = Date.now().toString();
     setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
-  
+    }else{
+      Alert.alert('Désolé','Nombre de caractères doit être minimum 1', [
+        {
+          text: 'COMPRIS',
+          onPress: () => console.warn('refusé')
+        },
+        {
+          text: 'D\'accord',
+          onPress: () => console.warn('pas accépté refusé')
+        }
+      ],
+      {
+        cancelable: true,
+        onDismiss: () => console.warn(' refusé avec dismiss')
+      
+      }
+      );
+    }
+  }
+
+  const deleteProduct = (key) => {
+    setMyProducts(currentMyProducts => {
+      return currentMyProducts.filter(product=> product.key != key)
+    } )
   }
 
     return(
       <View style={styles.container}>
         <AddPoduct submitHandler={submitHandler}/>
-        
-
 
         <FlatList
           data={myProducts}
-          renderItem={({item}) => <Products name= {item.name}/>}
+          renderItem={({item}) => (
+            <Products 
+              name= {item.name}
+              idString={item.key}
+              deleteProduct={deleteProduct}
+              />)}
         />
       </View>
     );

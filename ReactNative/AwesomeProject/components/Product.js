@@ -2,17 +2,12 @@ import React from "react";
 import { View, Text,StyleSheet, TouchableWithoutFeedback,TouchableOpacity,TouchableHighlight,Pressable } from "react-native";
 
 
-const Products = ({name}) => {
+const Products = ({name, deleteProduct, idString}) => {
     return(
         // <TouchableWithoutFeedback>
         // <TouchableOpacity onPress={() => console.log('cliquer')} activeOpacity={0.8}>
     // <TouchableHighlight onPress={() => console.log('cliquer')} activeOpacity={0.8} underlayColor={'yellow'}>
-    <Pressable onPress={() => console.log('cliquer')}
-        style={({pressed}) => [
-            {
-            backgroundColor:pressed ? "blue":"red" 
-        }
-        ]}>
+    <Pressable onPress={() => deleteProduct(idString)}>
        <View syle={styles.productItems}>
             <Text style={styles.element} >{name}</Text>
        </View> 
