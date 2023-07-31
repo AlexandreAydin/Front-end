@@ -985,13 +985,250 @@
 
 
 
+// /**
+// * ! 56. API Alert de React Native 
+// */
+
+
+// import React, {useState} from "react";
+// import { View,StyleSheet, FlatList,Alert } from "react-native";
+// import Products from "./components/Product";
+// import AddPoduct from "./components/AddProduct";
+
+
+  
+// export default function App() {
+  
+//   const [myProducts, setMyProducts] = useState([]);
+
+//   const submitHandler = (product) => {
+//     if(product.length > 1 ) {
+//     const idString = Date.now().toString();
+//     setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
+//     }else{
+//       Alert.alert('Désolé','Nombre de caractères doit être minimum 1', [
+//         {
+//           text: 'COMPRIS',
+//           onPress: () => console.warn('refusé')
+//         },
+//         {
+//           text: 'D\'accord',
+//           onPress: () => console.warn('pas accépté refusé')
+//         }
+//       ],
+//       {
+//         cancelable: true,
+//         onDismiss: () => console.warn(' refusé avec dismiss')
+      
+//       }
+//       );
+//     }
+//   }
+
+//   const deleteProduct = (key) => {
+//     setMyProducts(currentMyProducts => {
+//       return currentMyProducts.filter(product=> product.key != key)
+//     } )
+//   }
+
+//     return(
+//       <View style={styles.container}>
+//         <AddPoduct submitHandler={submitHandler}/>
+
+//         <FlatList
+//           data={myProducts}
+//           renderItem={({item}) => (
+//             <Products 
+//               name= {item.name}
+//               idString={item.key}
+//               deleteProduct={deleteProduct}
+//               />)}
+//         />
+//       </View>
+//     );
+//   }
+      
+
+// const styles = StyleSheet.create({
+//   container:{
+//     padding: 40,
+//     paddingTop:60,
+//   },
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+// * ! 57. Utilisation du Hook useEffect dans React Native
+// */
+
+
+// import React, {useState, useEffect} from "react";
+// import { View,StyleSheet, FlatList,Alert } from "react-native";
+// import Products from "./components/Product";
+// import AddPoduct from "./components/AddProduct";
+
+
+  
+// export default function App() {
+  
+//   const [myProducts, setMyProducts] = useState([]);
+//   const [count, setCount] = useState([]);
+
+//   useEffect(() => {
+//     if (count > 3) {
+//       setMyProducts([])
+//     }
+//   }, [count]);
+
+//   const submitHandler = (product) => {
+//     if(product.length > 1 ) {
+//     const idString = Date.now().toString();
+//     setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
+//     }else{
+//       Alert.alert('Désolé','Nombre de caractères doit être minimum 2', [
+//         {
+//           text: 'COMPRIS',
+//           onPress: () => setCount(count + 1)
+//         },
+//       ],
+//       {
+//         cancelable: true,
+//         onDismiss: () => console.warn(' refusé avec dismiss')
+      
+//       }
+//       );
+//     }
+//   }
+
+//   const deleteProduct = (key) => {
+//     setMyProducts(currentMyProducts => {
+//       return currentMyProducts.filter(product=> product.key != key)
+//     } )
+//   }
+
+//     return(
+//       <View style={styles.container}>
+//         <AddPoduct submitHandler={submitHandler}/>
+
+//         <FlatList
+//           data={myProducts}
+//           renderItem={({item}) => (
+//             <Products 
+//               name= {item.name}
+//               idString={item.key}
+//               deleteProduct={deleteProduct}
+//               />)}
+//         />
+//       </View>
+//     );
+//   }
+      
+
+// const styles = StyleSheet.create({
+//   container:{
+//     padding: 40,
+//     paddingTop:60,
+//   },
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+// * ! 58. Désactiver un bouton dans React Native
+// */
+
+
+// import React, {useState} from "react";
+// import { View,StyleSheet, FlatList } from "react-native";
+// import Products from "./components/Product";
+// import AddPoduct from "./components/AddProduct";
+
+
+  
+// export default function App() {
+  
+//   const [myProducts, setMyProducts] = useState([]);
+
+//   const submitHandler = (product) => {
+//     const idString = Date.now().toString();
+//     setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
+
+//   }
+
+//   const deleteProduct = (key) => {
+//     setMyProducts(currentMyProducts => {
+//       return currentMyProducts.filter(product=> product.key != key)
+//     } )
+//   }
+
+//     return(
+//       <View style={styles.container}>
+//         <AddPoduct submitHandler={submitHandler}/>
+
+//         <FlatList
+//           data={myProducts}
+//           renderItem={({item}) => (
+//             <Products 
+//               name= {item.name}
+//               idString={item.key}
+//               deleteProduct={deleteProduct}
+//               />)}
+//         />
+//       </View>
+//     );
+//   }
+      
+
+// const styles = StyleSheet.create({
+//   container:{
+//     padding: 40,
+//     paddingTop:60,
+//   },
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
-* ! 56. API Alert de React Native 
+* ! 59. Découverte du composant Modal - Partie 1
 */
 
 
 import React, {useState} from "react";
-import { View,StyleSheet, FlatList,Alert } from "react-native";
+import { View,StyleSheet, FlatList,Modal,Text } from "react-native";
 import Products from "./components/Product";
 import AddPoduct from "./components/AddProduct";
 
@@ -1000,29 +1237,17 @@ import AddPoduct from "./components/AddProduct";
 export default function App() {
   
   const [myProducts, setMyProducts] = useState([]);
+  const [showModal, setShowModal] = useState([]);
 
   const submitHandler = (product) => {
-    if(product.length > 1 ) {
-    const idString = Date.now().toString();
-    setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
-    }else{
-      Alert.alert('Désolé','Nombre de caractères doit être minimum 1', [
-        {
-          text: 'COMPRIS',
-          onPress: () => console.warn('refusé')
-        },
-        {
-          text: 'D\'accord',
-          onPress: () => console.warn('pas accépté refusé')
-        }
-      ],
-      {
-        cancelable: true,
-        onDismiss: () => console.warn(' refusé avec dismiss')
-      
-      }
-      );
+    if(product.length > 1 ){
+      setMyProducts(currentMyProducts => {
+        return currentMyProducts.filter(product=> product.key != key)
+      } );
+    }else {
+
     }
+
   }
 
   const deleteProduct = (key) => {
@@ -1033,6 +1258,12 @@ export default function App() {
 
     return(
       <View style={styles.container}>
+
+        <Modal
+          visible={false}
+        >
+          <Text>Hello Word!</Text>
+        </Modal>
         <AddPoduct submitHandler={submitHandler}/>
 
         <FlatList
