@@ -1224,11 +1224,19 @@
 
 /**
 * ! 59. Découverte du composant Modal - Partie 1
+  https://reactnative.dev/docs/modal
 */
 
 
 import React, {useState} from "react";
-import { View,StyleSheet, FlatList,Modal,Text } from "react-native";
+import { 
+  View,
+  StyleSheet,
+  FlatList,
+  Modal,
+  Text,
+  Pressable,
+ } from "react-native";
 import Products from "./components/Product";
 import AddPoduct from "./components/AddProduct";
 
@@ -1237,7 +1245,7 @@ import AddPoduct from "./components/AddProduct";
 export default function App() {
   
   const [myProducts, setMyProducts] = useState([]);
-  const [showModal, setShowModal] = useState([]);
+  const [showModal, setShowModal] = useState(true);
 
   const submitHandler = (product) => {
     if(product.length > 1 ){
@@ -1245,7 +1253,7 @@ export default function App() {
         return currentMyProducts.filter(product=> product.key != key)
       } );
     }else {
-
+      setShowModal(true)
     }
 
   }
@@ -1260,9 +1268,30 @@ export default function App() {
       <View style={styles.container}>
 
         <Modal
-          visible={false}
+          visible={showModal}
+          onRequestClose={() => setShowModal(false)}
+          animationType="slide"
+          transparent
         >
-          <Text>Hello Word!</Text>
+         <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <View style={styles.modalHeader}>
+                <Text style={styles.modalHeaderText}>OUPS!</Text>
+              </View>
+              <View style={styles.modalBody}>
+                <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
+              </View>
+              <View style={styles.modalFooter}>
+                <Pressable 
+                  style={styles.pressableBtnModal}
+                  onPress={()=>setShowModal(false)}
+                  >
+                  <Text style={styles.modalBtn}>Ok</Text>
+                </Pressable>
+              </View>
+            </View>
+
+         </View>
         </Modal>
         <AddPoduct submitHandler={submitHandler}/>
 
@@ -1285,4 +1314,55 @@ const styles = StyleSheet.create({
     padding: 40,
     paddingTop:60,
   },
+  modalContainer:{
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor:"rgba(0,0,0,0.2)"
+  },
+  modalContent:{
+    backgroundColor:"#fff",
+    width: "90%",
+    height: 250,
+    borderRadius:15,
+    alignItems:"center",
+  },
+  modalHeader:{
+    width:"100%",
+    padding:16,
+    alignItems:"center",
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    borderBottomWidth: 1,
+    borderColor:'lightgray',
+  },
+  modalHeaderText:{
+    color:"grey",
+    fontSize:17,
+  },
+  modalBody:{
+    flex: 1,
+    width:"100%",
+    alignItems:"center",
+    justifyContent:"center",
+  },
+  modalBodyText:{
+    fontSize:17
+  },
+  modalFooter:{
+   
+    width:"100%",
+
+  },
+  pressableBtnModal:{
+    backgroundColor:'#20b2aa',
+    borderBottomLeftRadius:15,
+    borderBottomRightRadius:15,
+  },
+  modalBtn:{
+    fontSize:17,
+    color:"#fff",
+    textAlign:"center",
+    padding:16,
+  }
 });
