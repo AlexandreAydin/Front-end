@@ -1222,147 +1222,951 @@
 
 
 
-/**
-* ! 59. Découverte du composant Modal - Partie 1
-  https://reactnative.dev/docs/modal
-*/
+// /**
+// * ! 59. Découverte du composant Modal - Partie 1
+//   https://reactnative.dev/docs/modal
+// */
 
 
-import React, {useState} from "react";
-import { 
-  View,
-  StyleSheet,
-  FlatList,
-  Modal,
-  Text,
-  Pressable,
- } from "react-native";
-import Products from "./components/Product";
-import AddPoduct from "./components/AddProduct";
+// import React, {useState} from "react";
+// import { 
+//   View,
+//   StyleSheet,
+//   FlatList,
+//   Modal,
+//   Text,
+//   Pressable,
+//  } from "react-native";
+// import Products from "./components/Product";
+// import AddPoduct from "./components/AddProduct";
 
 
   
-export default function App() {
+// export default function App() {
   
-  const [myProducts, setMyProducts] = useState([]);
-  const [showModal, setShowModal] = useState(true);
+//   const [myProducts, setMyProducts] = useState([]);
+//   const [showModal, setShowModal] = useState(true);
 
-  const submitHandler = (product) => {
-    if(product.length > 1 ){
-      setMyProducts(currentMyProducts => {
-        return currentMyProducts.filter(product=> product.key != key)
-      } );
-    }else {
-      setShowModal(true)
-    }
+//   const submitHandler = (product) => {
+//     if(product.length > 1 ){
+//       setMyProducts(currentMyProducts => {
+//         return currentMyProducts.filter(product=> product.key != key)
+//       } );
+//     }else {
+//       setShowModal(true)
+//     }
 
-  }
+//   }
 
-  const deleteProduct = (key) => {
-    setMyProducts(currentMyProducts => {
-      return currentMyProducts.filter(product=> product.key != key)
-    } )
-  }
+//   const deleteProduct = (key) => {
+//     setMyProducts(currentMyProducts => {
+//       return currentMyProducts.filter(product=> product.key != key)
+//     } )
+//   }
 
-    return(
-      <View style={styles.container}>
+//     return(
+//       <View style={styles.container}>
 
-        <Modal
-          visible={showModal}
-          onRequestClose={() => setShowModal(false)}
-          animationType="slide"
-          transparent
-        >
-         <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <View style={styles.modalHeader}>
-                <Text style={styles.modalHeaderText}>OUPS!</Text>
-              </View>
-              <View style={styles.modalBody}>
-                <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
-              </View>
-              <View style={styles.modalFooter}>
-                <Pressable 
-                  style={styles.pressableBtnModal}
-                  onPress={()=>setShowModal(false)}
-                  >
-                  <Text style={styles.modalBtn}>Ok</Text>
-                </Pressable>
-              </View>
-            </View>
+//         <Modal
+//           visible={showModal}
+//           onRequestClose={() => setShowModal(false)}
+//           animationType="slide"
+//           transparent
+//         >
+//          <View style={styles.modalContainer}>
+//             <View style={styles.modalContent}>
+//               <View style={styles.modalHeader}>
+//                 <Text style={styles.modalHeaderText}>OUPS!</Text>
+//               </View>
+//               <View style={styles.modalBody}>
+//                 <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
+//               </View>
+//               <View style={styles.modalFooter}>
+//                 <Pressable 
+//                   style={styles.pressableBtnModal}
+//                   onPress={()=>setShowModal(false)}
+//                   >
+//                   <Text style={styles.modalBtn}>Ok</Text>
+//                 </Pressable>
+//               </View>
+//             </View>
 
-         </View>
-        </Modal>
-        <AddPoduct submitHandler={submitHandler}/>
+//          </View>
+//         </Modal>
+//         <AddPoduct submitHandler={submitHandler}/>
 
-        <FlatList
-          data={myProducts}
-          renderItem={({item}) => (
-            <Products 
-              name= {item.name}
-              idString={item.key}
-              deleteProduct={deleteProduct}
-              />)}
-        />
-      </View>
-    );
-  }
+//         <FlatList
+//           data={myProducts}
+//           renderItem={({item}) => (
+//             <Products 
+//               name= {item.name}
+//               idString={item.key}
+//               deleteProduct={deleteProduct}
+//               />)}
+//         />
+//       </View>
+//     );
+//   }
       
 
-const styles = StyleSheet.create({
-  container:{
-    padding: 40,
-    paddingTop:60,
-  },
-  modalContainer:{
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor:"rgba(0,0,0,0.2)"
-  },
-  modalContent:{
-    backgroundColor:"#fff",
-    width: "90%",
-    height: 250,
-    borderRadius:15,
-    alignItems:"center",
-  },
-  modalHeader:{
-    width:"100%",
-    padding:16,
-    alignItems:"center",
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-    borderBottomWidth: 1,
-    borderColor:'lightgray',
-  },
-  modalHeaderText:{
-    color:"grey",
-    fontSize:17,
-  },
-  modalBody:{
-    flex: 1,
-    width:"100%",
-    alignItems:"center",
-    justifyContent:"center",
-  },
-  modalBodyText:{
-    fontSize:17
-  },
-  modalFooter:{
+// const styles = StyleSheet.create({
+//   container:{
+//     padding: 40,
+//     paddingTop:60,
+//   },
+//   modalContainer:{
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor:"rgba(0,0,0,0.2)"
+//   },
+//   modalContent:{
+//     backgroundColor:"#fff",
+//     width: "90%",
+//     height: 250,
+//     borderRadius:15,
+//     alignItems:"center",
+//   },
+//   modalHeader:{
+//     width:"100%",
+//     padding:16,
+//     alignItems:"center",
+//     borderTopLeftRadius: 15,
+//     borderTopRightRadius: 15,
+//     borderBottomWidth: 1,
+//     borderColor:'lightgray',
+//   },
+//   modalHeaderText:{
+//     color:"grey",
+//     fontSize:17,
+//   },
+//   modalBody:{
+//     flex: 1,
+//     width:"100%",
+//     alignItems:"center",
+//     justifyContent:"center",
+//   },
+//   modalBodyText:{
+//     fontSize:17
+//   },
+//   modalFooter:{
    
-    width:"100%",
+//     width:"100%",
 
-  },
-  pressableBtnModal:{
-    backgroundColor:'#20b2aa',
-    borderBottomLeftRadius:15,
-    borderBottomRightRadius:15,
-  },
-  modalBtn:{
-    fontSize:17,
-    color:"#fff",
-    textAlign:"center",
-    padding:16,
-  }
-});
+//   },
+//   pressableBtnModal:{
+//     backgroundColor:'#20b2aa',
+//     borderBottomLeftRadius:15,
+//     borderBottomRightRadius:15,
+//   },
+//   modalBtn:{
+//     fontSize:17,
+//     color:"#fff",
+//     textAlign:"center",
+//     padding:16,
+//   }
+// });
+
+
+
+
+
+
+
+
+
+
+  
+
+
+ 
+   
+    
+    
+
+
+// /**
+// * ! 65. Exercice 1
+// */
+
+
+// import React, { useState } from "react";
+// import {View,Text, StyleSheet} from "react-native";
+
+// export default function App() {
+//   const obj = [
+//     {id:1, name:"Stan",age: 45},
+//     {id:2, name:"Elodie",age: 45},
+//     {id:3, name:"Elenora",age: 18},
+//     {id:4, name:"Elizabeth",age: 14},
+//     {id:5, name:"jean",age: 1020},
+//     {id:6, name:"Pierre",age: 30},
+//   ]
+
+//   const [ family, setFamily] = useState (obj)
+
+//   return (
+//     <View style={styles.container}>
+//       {
+//         family.map(member => {
+//           return(
+//             <View key={member.id } style={styles.list}>
+//               <Text style={styles.textList}> Nom:{member.name} | Age:{member.age}</Text>
+//             </View>
+//           )
+//         })
+//       }
+//     </View>
+//   )
+// }
+
+// const styles=StyleSheet.create({
+//   container:{
+//     flex:1,
+//     alignItems:"stretch",
+//     justifyContent:"center",
+//   },
+//   list:{
+//     backgroundColor:"deepskyblue",
+//     justifyContent:"center",
+//     alignItems:"center",
+//     margin:10
+//   },
+//   textList:{
+//     color:"#fff",
+//     padding:12,
+//     fontSize:20
+//   }
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+// * ! 66. Exercice 2
+// */
+
+
+// import React, { useState } from "react";
+// import {View,Text, StyleSheet} from "react-native";
+
+// export default function App() {
+//   const obj = [
+//     {id:1, name:"Stan",age: 45},
+//     {id:2, name:"Elodie",age: 45},
+//     {id:3, name:"Elenora",age: 18},
+//     {id:4, name:"Elizabeth",age: 14},
+//     {id:5, name:"jean",age: 1020},
+//     {id:6, name:"Pierre",age: 30},
+//   ]
+
+//   const [ family, setFamily] = useState (obj)
+
+//   return (
+//     <View style={styles.container}>
+//       {
+//         family.map(member => {
+//           return(
+//             <View key={member.id } style={styles.list}>
+//               <Text style={styles.textList}> Nom:{member.name} | Age:{member.age}</Text>
+//             </View>
+//           )
+//         })
+//       }
+//     </View>
+//   )
+// }
+
+// const styles=StyleSheet.create({
+//   container:{
+//     flex:1,
+//     alignItems:"stretch",
+//     justifyContent:"flex-end",
+//   },
+//   list:{
+//     backgroundColor:"deepskyblue",
+//     justifyContent:"center",
+//     alignItems:"center",
+//     margin:10
+//   },
+//   textList:{
+//     color:"#fff",
+//     padding:12,
+//     fontSize:20
+//   }
+// })
+
+
+
+
+
+
+// /**
+// * ! 67. Exercice 3
+// */
+
+
+// import React, { useState } from "react";
+// import {View,Text, StyleSheet} from "react-native";
+
+// export default function App() {
+//   const obj = [
+//     {id:1, name:"Stan",age: 45},
+//     {id:2, name:"Elodie",age: 45},
+//     {id:3, name:"Elenora",age: 18},
+//     {id:4, name:"Elizabeth",age: 14},
+//     {id:5, name:"jean",age: 1020},
+//     {id:6, name:"Pierre",age: 30},
+//   ]
+
+//   const [ family, setFamily] = useState (obj)
+
+//   return (
+//     <View style={styles.container}>
+//       {
+//         family.map(member => {
+//           return(
+//             <View key={member.id } style={styles.list}>
+//               <Text style={styles.textList}> Nom:{member.name} | Age:{member.age}</Text>
+//             </View>
+//           )
+//         })
+//       }
+//     </View>
+//   )
+// }
+
+// const styles=StyleSheet.create({
+//   container:{
+//     flex:1,
+//     alignItems:"stretch",
+//     justifyContent:"flex-start",
+//     marginTop: 20
+//   },
+//   list:{
+//     backgroundColor:"deepskyblue",
+//     justifyContent:"center",
+//     alignItems:"center",
+//     margin:10
+//   },
+//   textList:{
+//     color:"#fff",
+//     padding:12,
+//     fontSize:20
+//   }
+// })
+
+
+
+
+// /**
+// * ! 68. Exercice 4
+// */
+
+
+// import React, { useState } from "react";
+// import {View,Text, StyleSheet} from "react-native";
+
+// export default function App() {
+//   const obj = [
+//     {id:1, name:"Stan",age: 45},
+//     {id:2, name:"Elodie",age: 45},
+//     {id:3, name:"Elenora",age: 18},
+//     {id:4, name:"Elizabeth",age: 14},
+//     {id:5, name:"jean",age: 1020},
+//     {id:6, name:"Pierre",age: 30},
+//   ]
+
+//   const [ family, setFamily] = useState (obj)
+
+//   return (
+//     <View style={styles.container}>
+//       {
+//         family.map(member => {
+//           return(
+//             <View key={member.id } style={styles.list}>
+//               <Text style={styles.textList}> Nom:{member.name} | Age:{member.age}</Text>
+//             </View>
+//           )
+//         })
+//       }
+//     </View>
+//   )
+// }
+
+// const styles=StyleSheet.create({
+//   container:{
+//     flex:1,
+//     alignItems:"stretch",
+//     marginTop:20
+//   },
+//   list:{
+//     backgroundColor:"deepskyblue",
+//     justifyContent:"center",
+//     alignItems:"center",
+//     margin:10,
+//     flexGrow:  1,
+//   },
+//   textList:{
+//     color:"#fff",
+//     padding:12,
+//     fontSize:20
+//   }
+// })
+
+
+
+// /**
+// * ! 69. Exercice 5
+// */
+
+
+// import React, { useState } from "react";
+// import {View,Text, StyleSheet,ScrollView} from "react-native";
+
+// export default function App() {
+//   const obj = [
+//     {id:1, name:"Stan",age: 45},
+//     {id:2, name:"Elodie",age: 45},
+//     {id:3, name:"Elenora",age: 18},
+//     {id:4, name:"Elizabeth",age: 14},
+//     {id:5, name:"jean",age: 1020},
+//     {id:6, name:"Pierre",age: 30},
+//   ]
+
+//   const [ family, setFamily] = useState (obj)
+
+//   return (
+//     <View style={styles.container}>
+//       <ScrollView>
+//       {
+
+//         family.map(member => {
+//           return(
+//             <View key={member.id } style={styles.list}>
+//               <Text style={styles.textList}> Nom:{member.name} | Age:{member.age}</Text>
+//             </View>
+//           )
+//         })
+//       }
+//       </ScrollView>
+//     </View>
+//   )
+// }
+
+// const styles=StyleSheet.create({
+//   container:{
+//     flex:1,
+//     alignItems:"stretch",
+//     marginTop:20
+//   },
+//   list:{
+//     backgroundColor:"deepskyblue",
+//     justifyContent:"center",
+//     alignItems:"center",
+//     margin:10
+//   },
+//   textList:{
+//     color:"#fff",
+//     padding:40,
+//     fontSize:40
+//   }
+// })
+
+
+
+
+
+
+
+// /**
+// * ! 70. Exercice 6
+// * ! 71. Exercice 7
+// * ! 72. Exercice 7
+// *
+// */
+
+
+// import React, { useState } from "react";
+// import {View,Text, StyleSheet,ScrollView, RefreshControl, Alert} from "react-native";
+
+// export default function App() {
+//   const obj = [
+//     {id:1, name:"Stan",age: 45},
+//     {id:2, name:"Elodie",age: 45},
+//     {id:3, name:"Elenora",age: 18},
+//     {id:4, name:"Elizabeth",age: 14},
+//     {id:5, name:"jean",age: 1020},
+//     {id:6, name:"Pierre",age: 30},
+//     {id:7, name:"Jean",age: 30},
+//     {id:8, name:"Luis",age: 30},
+//     {id:9, name:"Marie",age: 30},
+//     {id:10, name:"Anne",age: 30},
+//   ]
+
+//   const [ family, setFamily] = useState (obj);
+//   const [ refresh, setRefresh] = useState (false);
+  
+
+//   const onRefresh = ()  =>{
+//     setRefresh(true);
+//     Alert.alert(
+//       'info',
+//       'La list a été rafraîchie'
+//       [
+//         {
+//           text: 'OK',
+//           onPress:()=>console.warn('La list a été rafraîchie'),
+//           style:'cancel'
+//         }
+//       ]
+//     );
+//     setRefresh(false);
+//   }
+
+//   return (
+//     <View style={styles.container}>
+//       <ScrollView
+//         refreshControl={
+//           <RefreshControl
+//             refreshing={refresh}
+//             onRefresh={onRefresh}
+//             colors={['red']}
+//           />
+
+//         }
+//       >
+//       {
+
+//         family.map(member => {
+//           return(
+//             <View key={member.id } style={styles.list}>
+//               <Text style={styles.textList}> Nom:{member.name} | Age:{member.age}</Text>
+//             </View>
+//           )
+//         })
+//       }
+//       </ScrollView>
+//     </View>
+//   )
+// }
+
+// const styles=StyleSheet.create({
+//   container:{
+//     flex:1,
+//     alignItems:"stretch",
+//     marginTop:20
+//   },
+//   list:{
+//     backgroundColor:"deepskyblue",
+//     justifyContent:"center",
+//     alignItems:"center",
+//     margin:10
+//   },
+//   textList:{
+//     color:"#fff",
+//     padding:20,
+//     fontSize:20
+//   }
+// })
+
+
+
+
+
+
+
+
+// /**
+// * ! 73. Exercice 9
+// * ! 74. Exercice 10
+// */
+
+
+// import React, { useState } from "react";
+// import {View,Text, StyleSheet, FlatList} from "react-native";
+
+// export default function App() {
+//   const obj = [
+//     {name:"Stan",age: 45},
+//     {name:"Elodie",age: 45},
+//     {name:"Elenora",age: 18},
+//     {name:"Elizabeth",age: 14},
+//     {name:"jean",age: 1020},
+//     {name:"Pierre",age: 30},
+//     {name:"Jean",age: 30},
+//     {name:"Luis",age: 30},
+//     {name:"Marie",age: 30},
+//     {name:"Anne",age: 30},
+//   ]
+
+//   const [ family, setFamily] = useState (obj);
+  
+
+
+
+//   return (
+//     <View style={styles.container}>
+//       <FlatList
+//         data={family}
+//         renderItem={({item})=>{
+//           return(
+//             <View style={styles.list}>
+//               <Text style={styles.textList}> Nom: {item.name} | Age: {item.age}</Text>
+//            </View>
+//           )
+//         }}
+//         keyExtractor={(item,index) => index.toString()}
+//       />
+//     </View>
+//   )
+// }
+
+// const styles=StyleSheet.create({
+//   container:{
+//     flex:1,
+//     alignItems:"stretch",
+//     marginTop:20
+//   },
+//   list:{
+//     backgroundColor:"deepskyblue",
+//     justifyContent:"center",
+//     alignItems:"center",
+//     margin:10
+//   },
+//   textList:{
+//     color:"#fff",
+//     padding:20,
+//     fontSize:20
+//   }
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+// * ! 75. Exercice 11
+// */
+
+
+// import React, { useState } from "react";
+// import {View,Text, StyleSheet, FlatList, RefreshControl} from "react-native";
+
+// export default function App() {
+//   const obj = [
+//     {name:"Stan",age: 45},
+//     {name:"Elodie",age: 45},
+//     {name:"Elenora",age: 18},
+//     {name:"Elizabeth",age: 14},
+//     {name:"jean",age: 1020},
+//     {name:"Pierre",age: 30},
+//     {name:"Jean",age: 30},
+//     {name:"Luis",age: 30},
+//     {name:"Marie",age: 30},
+//     {name:"Anne",age: 30},
+//   ]
+
+//   const [ family, setFamily] = useState (obj);
+//   const [ invert, setInvert] = useState (false);
+
+
+//   const onRefresh = () =>  setInvert(!invert);
+
+
+
+
+//   return (
+//     <View style={styles.container}>
+//       <FlatList
+//         data={family}
+//         renderItem={({item})=>{
+//           return(
+//             <View style={styles.list}>
+//               <Text style={styles.textList}> Nom: {item.name} | Age: {item.age}</Text>
+//            </View>
+//           )
+//         }}
+//         keyExtractor={(item,index) => index.toString()}
+//         horizontal
+//         inverted={invert}
+//         refreshControl={
+//           <RefreshControl
+//             refreshing={false}
+//             onRefresh={onRefresh}
+//           />
+//         }
+//       />
+//     </View>
+//   )
+// }
+
+// const styles=StyleSheet.create({
+//   container:{
+//     flex:1,
+//     alignItems:"stretch",
+//     marginTop:20
+//   },
+//   list:{
+//     backgroundColor:"deepskyblue",
+//     justifyContent:"center",
+//     alignItems:"center",
+//     margin:10
+//   },
+//   textList:{
+//     color:"#fff",
+//     padding:20,
+//     fontSize:20
+//   }
+// })
+
+
+
+
+
+// /**
+// * ! 76. Exercice 12
+// */
+
+
+// import React, { useState } from "react";
+// import {View,Text, StyleSheet,SectionList} from "react-native";
+
+// export default function App() {
+  
+// const obj = [
+//   {
+//     role: "Père",
+//     data: ["Stan", 45]
+//   },
+//   {
+//     role: "Mère",
+//     data: ["Francine", 45]
+//   },
+//   {
+//     role: "Fille",
+//     data: ["hayley", 18]
+//   },
+//   {
+//     role: "Fils",
+//     data: ["Roger", 13]
+//   },
+//   {
+//     role: "Poisson",
+//     data: ["Klaus", 3]
+//   },
+// ]
+
+//   const [ family, setFamily] = useState (obj);
+
+
+
+
+//   return (
+//     <View style={styles.container}>
+//       <SectionList
+//       sections = { family}
+//       keyExtractor={(item,index) => index.toString()}
+//       renderSectionHeader={({section})=>(
+//         <View style={styles.list}>
+//           <Text style={styles.textList}>{section.role} </Text>
+//         </View>
+//       )}
+//       renderItem={({item})=>{
+//         return(
+//           <View>
+//             <Text style={styles.textListData}>{ item }</Text>
+//          </View>
+//         )
+//       }}
+//       />
+//     </View>
+//   )
+// }
+
+// const styles=StyleSheet.create({
+//   container:{
+//     flex:1,
+//     alignItems:"stretch",
+//     marginTop:20
+//   },
+//   list:{
+//     backgroundColor:"deepskyblue",
+//     justifyContent:"center",
+//     alignItems:"center",
+//     margin:10
+//   },
+//   textList:{
+//     color:"#fff",
+//     padding:20,
+//     fontSize:20
+//   },
+//   textListData:{
+//     color:'grey',
+//     padding: 9,
+//     fontSize:19,
+//     textAlign:"center"
+//   }
+// })
+
+
+
+
+
+
+
+
+// /**
+// * ! 77. Exercice 13
+// */
+
+
+import React, {useState} from 'react';
+import { View , Text, Button, FlatList, StyleSheet,Modal,Pressable } from "react-native";
+
+import Product from './components/Product';
+import AddPoduct from "./components/AddProduct";
+
+export default function App() {
+  
+    const [myProducts, setMyProducts] = useState([]);
+    const [showModal, setShowModal] = useState(true);
+  
+    const submitHandler = (product) => {
+      if(product.length > 1 ){
+        setMyProducts(currentMyProducts => {
+          return currentMyProducts.filter(product=> product.key != key)
+        } );
+      }else {
+        setShowModal(true)
+      }
+  
+    }
+  
+    const deleteProduct = (key) => {
+      setMyProducts(currentMyProducts => {
+        return currentMyProducts.filter(product=> product.key != key)
+      } )
+    }
+  
+      return(
+        <View style={styles.container}>
+  
+          <Modal
+            visible={showModal}
+            onRequestClose={() => setShowModal(false)}
+            animationType="slide"
+            transparent
+          >
+           <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <View style={styles.modalHeader}>
+                  <Text style={styles.modalHeaderText}>OUPS!</Text>
+                </View>
+                <View style={styles.modalBody}>
+                  <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
+                </View>
+                <View style={styles.modalFooter}>
+                  <Pressable 
+                    style={styles.pressableBtnModal}
+                    onPress={()=>setShowModal(false)}
+                    >
+                    <Text style={styles.modalBtn}>Ok</Text>
+                  </Pressable>
+                </View>
+              </View>
+  
+           </View>
+          </Modal>
+          <AddPoduct submitHandler={submitHandler}/>
+  
+          <FlatList
+            data={myProducts}
+            renderItem={({item}) => (
+              <Products 
+                name= {item.name}
+                idString={item.key}
+                deleteProduct={deleteProduct}
+                />)}
+          />
+        </View>
+      );
+    }
+        
+  
+  const styles = StyleSheet.create({
+    container:{
+      padding: 40,
+      paddingTop:60,
+    },
+    modalContainer:{
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor:"rgba(0,0,0,0.2)"
+    },
+    modalContent:{
+      backgroundColor:"#fff",
+      width: "90%",
+      height: 250,
+      borderRadius:15,
+      alignItems:"center",
+    },
+    modalHeader:{
+      width:"100%",
+      padding:16,
+      alignItems:"center",
+      borderTopLeftRadius: 15,
+      borderTopRightRadius: 15,
+      borderBottomWidth: 1,
+      borderColor:'lightgray',
+    },
+    modalHeaderText:{
+      color:"grey",
+      fontSize:17,
+    },
+    modalBody:{
+      flex: 1,
+      width:"100%",
+      alignItems:"center",
+      justifyContent:"center",
+    },
+    modalBodyText:{
+      fontSize:17
+    },
+    modalFooter:{
+     
+      width:"100%",
+  
+    },
+    pressableBtnModal:{
+      backgroundColor:'#20b2aa',
+      borderBottomLeftRadius:15,
+      borderBottomRightRadius:15,
+    },
+    modalBtn:{
+      fontSize:17,
+      color:"#fff",
+      textAlign:"center",
+      padding:16,
+    }
+  });

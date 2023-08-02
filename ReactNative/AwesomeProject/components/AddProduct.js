@@ -89,6 +89,13 @@ const AddPoduct = ({submitHandler}) => {
             placeholder="Nouveau produit"
             onChangeText={ inputHandler }
             value={product}
+            // max 9 caractére
+              // maxLength={9}
+            // text en password
+             // secureTextEntry
+            // desactiver input
+              // editable={true}
+            
           />
           <Button
             title="valider"
@@ -100,8 +107,7 @@ const AddPoduct = ({submitHandler}) => {
 
 const styles = StyleSheet.create({
     inputContainer:{
-        flexDirection:"row",
-        marginBottom: 9,
+        marginBottom: 15,
       },
       textInput:{
         borderColor: "grey",
@@ -110,6 +116,7 @@ const styles = StyleSheet.create({
         paddingLeft:9,
         fontSize:18,
         flexGrow:1,
+        marginBottom: 9,
       },
   })
 
