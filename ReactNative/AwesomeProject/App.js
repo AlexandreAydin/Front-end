@@ -2040,133 +2040,553 @@
 // */
 
 
-import React, {useState} from 'react';
-import { View , Text, Button, FlatList, StyleSheet,Modal,Pressable } from "react-native";
+// import React, {useState} from 'react';
+// import { View , Text, Button, FlatList, StyleSheet,Modal,Pressable } from "react-native";
 
-import Product from './components/Product';
-import AddPoduct from "./components/AddProduct";
+// import Product from './components/Product';
+// import AddPoduct from "./components/AddProduct";
+// import DismissKeyboard from './components/DismissKeyboard';
 
-export default function App() {
+// export default function App() {
   
-    const [myProducts, setMyProducts] = useState([]);
-    const [showModal, setShowModal] = useState(true);
+//     const [myProducts, setMyProducts] = useState([]);
+//     const [showModal, setShowModal] = useState(true);
   
-    const submitHandler = (product) => {
-      if(product.length > 1 ){
-        setMyProducts(currentMyProducts => {
-          return currentMyProducts.filter(product=> product.key != key)
-        } );
-      }else {
-        setShowModal(true)
-      }
+//     const submitHandler = (product) => {
+//       if(product.length > 1 ){
+//         setMyProducts(currentMyProducts => {
+//           return currentMyProducts.filter(product=> product.key != key)
+//         } );
+//       }else {
+//         setShowModal(true)
+//       }
   
-    }
+//     }
   
-    const deleteProduct = (key) => {
-      setMyProducts(currentMyProducts => {
-        return currentMyProducts.filter(product=> product.key != key)
-      } )
-    }
+//     const deleteProduct = (key) => {
+//       setMyProducts(currentMyProducts => {
+//         return currentMyProducts.filter(product=> product.key != key)
+//       } )
+//     }
   
-      return(
-        <View style={styles.container}>
+//       return(
+//         <View style={styles.container}>
   
-          <Modal
-            visible={showModal}
-            onRequestClose={() => setShowModal(false)}
-            animationType="slide"
-            transparent
-          >
-           <View style={styles.modalContainer}>
-              <View style={styles.modalContent}>
-                <View style={styles.modalHeader}>
-                  <Text style={styles.modalHeaderText}>OUPS!</Text>
-                </View>
-                <View style={styles.modalBody}>
-                  <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
-                </View>
-                <View style={styles.modalFooter}>
-                  <Pressable 
-                    style={styles.pressableBtnModal}
-                    onPress={()=>setShowModal(false)}
-                    >
-                    <Text style={styles.modalBtn}>Ok</Text>
-                  </Pressable>
-                </View>
-              </View>
+//           <Modal
+//             visible={showModal}
+//             onRequestClose={() => setShowModal(false)}
+//             animationType="slide"
+//             transparent
+//           >
+//            <View style={styles.modalContainer}>
+//               <View style={styles.modalContent}>
+//                 <View style={styles.modalHeader}>
+//                   <Text style={styles.modalHeaderText}>OUPS!</Text>
+//                 </View>
+//                 <View style={styles.modalBody}>
+//                   <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
+//                 </View>
+//                 <View style={styles.modalFooter}>
+//                   <Pressable 
+//                     style={styles.pressableBtnModal}
+//                     onPress={()=>setShowModal(false)}
+//                     >
+//                     <Text style={styles.modalBtn}>Ok</Text>
+//                   </Pressable>
+//                 </View>
+//               </View>
   
-           </View>
-          </Modal>
-          <AddPoduct submitHandler={submitHandler}/>
+//            </View>
+//           </Modal>
+//           <AddPoduct submitHandler={submitHandler}/>
   
-          <FlatList
-            data={myProducts}
-            renderItem={({item}) => (
-              <Products 
-                name= {item.name}
-                idString={item.key}
-                deleteProduct={deleteProduct}
-                />)}
-          />
-        </View>
-      );
-    }
+//           <FlatList
+//             data={myProducts}
+//             renderItem={({item}) => (
+//               <Products 
+//                 name= {item.name}
+//                 idString={item.key}
+//                 deleteProduct={deleteProduct}
+//                 />)}
+//           />
+//         </View>
+//       );
+//     }
         
   
-  const styles = StyleSheet.create({
-    container:{
-      padding: 40,
-      paddingTop:60,
-    },
-    modalContainer:{
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor:"rgba(0,0,0,0.2)"
-    },
-    modalContent:{
-      backgroundColor:"#fff",
-      width: "90%",
-      height: 250,
-      borderRadius:15,
-      alignItems:"center",
-    },
-    modalHeader:{
-      width:"100%",
-      padding:16,
-      alignItems:"center",
-      borderTopLeftRadius: 15,
-      borderTopRightRadius: 15,
-      borderBottomWidth: 1,
-      borderColor:'lightgray',
-    },
-    modalHeaderText:{
-      color:"grey",
-      fontSize:17,
-    },
-    modalBody:{
-      flex: 1,
-      width:"100%",
-      alignItems:"center",
-      justifyContent:"center",
-    },
-    modalBodyText:{
-      fontSize:17
-    },
-    modalFooter:{
+//   const styles = StyleSheet.create({
+//     container:{
+//       padding: 40,
+//       paddingTop:60,
+//     },
+//     modalContainer:{
+//       flex: 1,
+//       justifyContent: "center",
+//       alignItems: "center",
+//       backgroundColor:"rgba(0,0,0,0.2)"
+//     },
+//     modalContent:{
+//       backgroundColor:"#fff",
+//       width: "90%",
+//       height: 250,
+//       borderRadius:15,
+//       alignItems:"center",
+//     },
+//     modalHeader:{
+//       width:"100%",
+//       padding:16,
+//       alignItems:"center",
+//       borderTopLeftRadius: 15,
+//       borderTopRightRadius: 15,
+//       borderBottomWidth: 1,
+//       borderColor:'lightgray',
+//     },
+//     modalHeaderText:{
+//       color:"grey",
+//       fontSize:17,
+//     },
+//     modalBody:{
+//       flex: 1,
+//       width:"100%",
+//       alignItems:"center",
+//       justifyContent:"center",
+//     },
+//     modalBodyText:{
+//       fontSize:17
+//     },
+//     modalFooter:{
      
-      width:"100%",
+//       width:"100%",
   
-    },
-    pressableBtnModal:{
-      backgroundColor:'#20b2aa',
-      borderBottomLeftRadius:15,
-      borderBottomRightRadius:15,
-    },
-    modalBtn:{
-      fontSize:17,
-      color:"#fff",
-      textAlign:"center",
-      padding:16,
-    }
-  });
+//     },
+//     pressableBtnModal:{
+//       backgroundColor:'#20b2aa',
+//       borderBottomLeftRadius:15,
+//       borderBottomRightRadius:15,
+//     },
+//     modalBtn:{
+//       fontSize:17,
+//       color:"#fff",
+//       textAlign:"center",
+//       padding:16,
+//     }
+//   });
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+//  * ! ! 78. Le module Keyboard 
+// */
+
+
+// import React, {useState} from 'react';
+// import { View , Text, Button, FlatList, StyleSheet,Modal,Pressable } from "react-native";
+
+// import Product from './components/Product';
+// import AddPoduct from "./components/AddProduct";
+// import DismissKeyboard from './components/DismissKeyboard';
+
+// export default function App() {
+  
+//     const [myProducts, setMyProducts] = useState([]);
+//     const [showModal, setShowModal] = useState(true);
+  
+//     const submitHandler = (product) => {
+//       if(product.length > 1 ){
+//         setMyProducts(currentMyProducts => {
+//           return currentMyProducts.filter(product=> product.key != key)
+//         } );
+//       }else {
+//         setShowModal(true)
+//       }
+  
+//     }
+  
+//     const deleteProduct = (key) => {
+//       setMyProducts(currentMyProducts => {
+//         return currentMyProducts.filter(product=> product.key != key)
+//       } )
+//     }
+  
+//       return(
+//         <DismissKeyboard>
+//           <View style={styles.container}>
+    
+//             <Modal
+//               visible={showModal}
+//               onRequestClose={() => setShowModal(false)}
+//               animationType="slide"
+//               transparent
+//             >
+//             <View style={styles.modalContainer}>
+//                 <View style={styles.modalContent}>
+//                   <View style={styles.modalHeader}>
+//                     <Text style={styles.modalHeaderText}>OUPS!</Text>
+//                   </View>
+//                   <View style={styles.modalBody}>
+//                     <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
+//                   </View>
+//                   <View style={styles.modalFooter}>
+//                     <Pressable 
+//                       style={styles.pressableBtnModal}
+//                       onPress={()=>setShowModal(false)}
+//                       >
+//                       <Text style={styles.modalBtn}>Ok</Text>
+//                     </Pressable>
+//                   </View>
+//                 </View>
+    
+//             </View>
+//             </Modal>
+//             <AddPoduct submitHandler={submitHandler}/>
+    
+//             <FlatList
+//               data={myProducts}
+//               renderItem={({item}) => (
+//                 <Products 
+//                   name= {item.name}
+//                   idString={item.key}
+//                   deleteProduct={deleteProduct}
+//                   />)}
+//             />
+//           </View>
+//         </DismissKeyboard>
+//       );
+//     }
+        
+  
+//   const styles = StyleSheet.create({
+//     container:{
+//       padding: 40,
+//       paddingTop:60,
+//       flex: 1,
+//     },
+//     modalContainer:{
+//       flex: 1,
+//       justifyContent: "center",
+//       alignItems: "center",
+//       backgroundColor:"rgba(0,0,0,0.2)"
+//     },
+//     modalContent:{
+//       backgroundColor:"#fff",
+//       width: "90%",
+//       height: 250,
+//       borderRadius:15,
+//       alignItems:"center",
+//     },
+//     modalHeader:{
+//       width:"100%",
+//       padding:16,
+//       alignItems:"center",
+//       borderTopLeftRadius: 15,
+//       borderTopRightRadius: 15,
+//       borderBottomWidth: 1,
+//       borderColor:'lightgray',
+//     },
+//     modalHeaderText:{
+//       color:"grey",
+//       fontSize:17,
+//     },
+//     modalBody:{
+//       flex: 1,
+//       width:"100%",
+//       alignItems:"center",
+//       justifyContent:"center",
+//     },
+//     modalBodyText:{
+//       fontSize:17
+//     },
+//     modalFooter:{
+     
+//       width:"100%",
+  
+//     },
+//     pressableBtnModal:{
+//       backgroundColor:'#20b2aa',
+//       borderBottomLeftRadius:15,
+//       borderBottomRightRadius:15,
+//     },
+//     modalBtn:{
+//       fontSize:17,
+//       color:"#fff",
+//       textAlign:"center",
+//       padding:16,
+//     }
+//   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+//  * ! 79. Le module Keyboard 
+// */
+
+
+// import React from 'react';
+// import { View , StyleSheet,Text } from "react-native";
+// import Example from './Example';
+
+
+// export default function App() {
+  
+
+//       return(
+        
+//           <View style={styles.container}>
+//               <Example></Example>
+            
+//           </View>
+       
+//       );
+//     }
+        
+  
+//   const styles = StyleSheet.create({
+//     container:{
+//       padding: 40,
+//       paddingTop:60,
+//       flex: 1,
+//     },
+//     modalContainer:{
+//       flex: 1,
+//       justifyContent: "center",
+//       alignItems: "center",
+//       backgroundColor:"rgba(0,0,0,0.2)"
+//     },
+//     modalContent:{
+//       backgroundColor:"#fff",
+//       width: "90%",
+//       height: 250,
+//       borderRadius:15,
+//       alignItems:"center",
+//     },
+//     modalHeader:{
+//       width:"100%",
+//       padding:16,
+//       alignItems:"center",
+//       borderTopLeftRadius: 15,
+//       borderTopRightRadius: 15,
+//       borderBottomWidth: 1,
+//       borderColor:'lightgray',
+//     },
+//     modalHeaderText:{
+//       color:"grey",
+//       fontSize:17,
+//     },
+//     modalBody:{
+//       flex: 1,
+//       width:"100%",
+//       alignItems:"center",
+//       justifyContent:"center",
+//     },
+//     modalBodyText:{
+//       fontSize:17
+//     },
+//     modalFooter:{
+     
+//       width:"100%",
+  
+//     },
+//     pressableBtnModal:{
+//       backgroundColor:'#20b2aa',
+//       borderBottomLeftRadius:15,
+//       borderBottomRightRadius:15,
+//     },
+//     modalBtn:{
+//       fontSize:17,
+//       color:"#fff",
+//       textAlign:"center",
+//       padding:16,
+//     }
+//   });
+
+
+
+
+
+
+
+
+
+/**
+* ! 80.Afficher TextInput dans un Modal suite à onPress sur un bouton
+*/
+
+
+import React, {useState} from "react";
+import { 
+  View,
+  StyleSheet,
+  FlatList,
+  Modal,
+  Text,
+  Pressable,
+ } from "react-native";
+import Products from "./components/Product";
+import AddPoduct from "./components/AddProduct";
+import { Button } from "bootstrap";
+
+
+  
+export default function App() {
+  
+  const [myProducts, setMyProducts] = useState([]);
+  const [showModal, setShowModal] = useState(true);
+  const [displayModal, setDisplayModal] = useState(false);
+
+  const submitHandler = (product) => {
+
+  setDisplayModal(false);
+
+
+  if(product.length > 1 ){
+    const idString = Date.now().toString();
+    setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
+  }else {
+    setShowModal(true)
+  }
+
+}
+
+
+  const deleteProduct = (key) => {
+    setMyProducts(currentMyProducts => {
+      return currentMyProducts.filter(product=> product.key != key)
+    } )
+  }
+
+
+  const cancelNewProduct =() => {
+    setDisplayModal(false);
+  }
+
+    return(
+      <View style={styles.container}>
+
+        <Modal
+          visible={showModal}
+          onRequestClose={() => setShowModal(false)}
+          animationType="slide"
+          transparent
+        >
+         <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <View style={styles.modalHeader}>
+                <Text style={styles.modalHeaderText}>OUPS!</Text>
+              </View>
+              <View style={styles.modalBody}>
+                <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
+              </View>
+              <View style={styles.modalFooter}>
+                <Pressable 
+                  style={styles.pressableBtnModal}
+                  onPress={()=>setShowModal(false)}
+                  >
+                  <Text style={styles.modalBtn}>Ok</Text>
+                </Pressable>
+              </View>
+            </View>
+
+         </View>
+        </Modal>
+        <Button
+          title='Nouveau produit'
+          onPress={()=> setDisplayModal('true')}
+        />
+        <AddPoduct
+          submitHandler={submitHandler}
+          displayModal={displayModal}
+          cancelNewProduct={cancelNewProduct}
+          />
+
+        <FlatList
+          data={myProducts}
+          renderItem={({item}) => (
+            <Products 
+              name= {item.name}
+              idString={item.key}
+              deleteProduct={deleteProduct}
+              />)}
+        />
+      </View>
+    );
+  }
+      
+
+const styles = StyleSheet.create({
+  container:{
+    padding: 40,
+    paddingTop:60,
+  },
+  modalContainer:{
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor:"rgba(0,0,0,0.2)"
+  },
+  modalContent:{
+    backgroundColor:"#fff",
+    width: "90%",
+    height: 250,
+    borderRadius:15,
+    alignItems:"center",
+  },
+  modalHeader:{
+    width:"100%",
+    padding:16,
+    alignItems:"center",
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    borderBottomWidth: 1,
+    borderColor:'lightgray',
+  },
+  modalHeaderText:{
+    color:"grey",
+    fontSize:17,
+  },
+  modalBody:{
+    flex: 1,
+    width:"100%",
+    alignItems:"center",
+    justifyContent:"center",
+  },
+  modalBodyText:{
+    fontSize:17
+  },
+  modalFooter:{
+   
+    width:"100%",
+
+  },
+  pressableBtnModal:{
+    backgroundColor:'#20b2aa',
+    borderBottomLeftRadius:15,
+    borderBottomRightRadius:15,
+  },
+  modalBtn:{
+    fontSize:17,
+    color:"#fff",
+    textAlign:"center",
+    padding:16,
+  }
+});
