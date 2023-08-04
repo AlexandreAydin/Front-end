@@ -200,11 +200,299 @@
 
 
 
+// /**
+// * ! 80.Afficher TextInput dans un Modal suite à onPress sur un bouton
+// */
+// import React, {useState} from "react";
+// import { View,StyleSheet, TextInput, Button, FlatList,Modal } from "react-native";
+
+// const AddPoduct = ({submitHandler,displayModal,cancelNewProduct}) => {
+
+//     const [ product, setProduct ]= useState("");
+
+//     const inputHandler = (val) => {
+//         setProduct(val)
+//     }
+
+//     const handleClick = () => {
+//         submitHandler(product);
+//         setProduct('');
+//     }
+
+//     return (
+//       <Modal
+//         visible={displayModal}
+//         animationType="slide"
+//       >
+//         <View style={styles.inputContainer}>
+//           <TextInput
+//             style={styles.textInput}
+//             placeholder="Nouveau produit"
+//             onChangeText={ inputHandler }
+//             value={product}
+//           />
+//           <View style={styles.btnContainer}>
+//             <View style={styles.btnBlue}>
+//               <Button
+//                 title="valider"
+//                 onPress={ handleClick}
+//               />
+//             </View>
+//             <View style={styles.btnTomato}>
+//               <Button
+//                 title="Annuler"
+//                 onPress={ cancelNewProduct }
+//                 color='tomato'
+//               />
+//             </View>
+//           </View>
+//         </View>
+//       </Modal>
+//     )
+// }
+
+// const styles = StyleSheet.create({
+//     inputContainer:{
+//         marginBottom: 15,
+//         justifyContent: "center",
+//         flex:1,
+//         padding: 24
+       
+//       },
+//       textInput:{
+//         borderColor: "grey",
+//         borderWidth: 1,
+//         padding:5,
+//         paddingLeft:9,
+//         fontSize:18,
+//         marginBottom: 9,
+//       },
+//       btnContainer: {
+//         flexDirection:"row",
+//         justifyContent: 'space-between'
+//       },
+//       btnBlue:{
+//         width:'45%'
+//       },
+//       btnTomato:{
+//         width:'45%',
+//       }
+//   })
+
+// export default AddPoduct
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+// * ! 86.Custom Button et props
+// */
+// import React, {useState} from "react";
+// import { View,StyleSheet, TextInput, Button, FlatList,Modal } from "react-native";
+// import ButtonComponent from "./ButtonComponent";
+
+// const AddPoduct = ({submitHandler,displayModal,cancelNewProduct}) => {
+
+//     const [ product, setProduct ]= useState("");
+
+//     const inputHandler = (val) => {
+//         setProduct(val)
+//     }
+
+//     const handleClick = () => {
+//         submitHandler(product);
+//         setProduct('');
+//     }
+
+//     return (
+//       <Modal
+//         visible={displayModal}
+//         animationType="slide"
+//       >
+//         <View style={styles.inputContainer}>
+//           <TextInput
+//             style={styles.textInput}
+//             placeholder="Nouveau produit"
+//             onChangeText={ inputHandler }
+//             value={product}
+//           />
+//           <View style={styles.btnContainer}>
+//               <ButtonComponent
+//                 onPress={ handleClick }
+//                 btnTitle="Valider"
+//                 style={styles.btnBlue}
+//               />
+//               <ButtonComponent
+//                   onPress={ cancelNewProduct }
+//                   btnTitle="Annuler"
+//                    style={styles.btnTomato}
+//               />
+//           </View>
+//         </View>
+//       </Modal>
+//     )
+// }
+
+// const styles = StyleSheet.create({
+//     inputContainer:{
+//         marginBottom: 15,
+//         justifyContent: "center",
+//         flex:1,
+//         padding: 24
+       
+//       },
+//       textInput:{
+//         borderColor: "grey",
+//         borderWidth: 1,
+//         padding:5,
+//         paddingLeft:9,
+//         fontSize:18,
+//         marginBottom: 9,
+//       },
+//       btnContainer: {
+//         flexDirection:"row",
+//         justifyContent: 'space-between'
+//       },
+//       btnBlue:{
+//         backgroundColor:'seagreen',
+//         width:150,
+//         borderRadius: 6
+//       },
+//       btnTomato:{
+//         width:150,
+//         borderRadius: 6
+//       }
+//   })
+
+// export default AddPoduct
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+// * ! 86.Custom Button et props
+// */
+// import React, {useState} from "react";
+// import { View,StyleSheet, TextInput, Button, FlatList,Modal } from "react-native";
+// import ButtonComponent from "./ButtonComponent";
+
+// const AddPoduct = ({submitHandler,displayModal,cancelNewProduct}) => {
+
+//     const [ product, setProduct ]= useState("");
+
+//     const inputHandler = (val) => {
+//         setProduct(val)
+//     }
+
+//     const handleClick = () => {
+//         submitHandler(product);
+//         setProduct('');
+//     }
+
+//     return (
+//       <Modal
+//         visible={displayModal}
+//         animationType="slide"
+//       >
+//         <View style={styles.inputContainer}>
+//           <TextInput
+//             style={styles.textInput}
+//             placeholder="Nouveau produit"
+//             onChangeText={ inputHandler }
+//             value={product}
+//           />
+//           <View style={styles.btnContainer}>
+//               <ButtonComponent
+//                 onPress={ handleClick }
+//                 btnTitle="Valider"
+//                 style={styles.btnBlue}
+//               />
+//               <ButtonComponent
+//                   onPress={ cancelNewProduct }
+//                   btnTitle="Annuler"
+//                    style={styles.btnTomato}
+//               />
+//           </View>
+//         </View>
+//       </Modal>
+//     )
+// }
+
+// const styles = StyleSheet.create({
+//     inputContainer:{
+//         marginBottom: 15,
+//         justifyContent: "center",
+//         flex:1,
+//         padding: 24
+       
+//       },
+//       textInput:{
+//         borderColor: "grey",
+//         borderWidth: 1,
+//         padding:5,
+//         paddingLeft:9,
+//         fontSize:18,
+//         marginBottom: 9,
+//       },
+//       btnContainer: {
+//         flexDirection:"row",
+//         justifyContent: 'space-between'
+//       },
+//       btnBlue:{
+//         backgroundColor:'seagreen',
+//         width:150,
+//         borderRadius: 6
+//       },
+//       btnTomato:{
+//         width:150,
+//         borderRadius: 6
+//       }
+//   })
+
+// export default AddPoduct
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
-* ! 80.Afficher TextInput dans un Modal suite à onPress sur un bouton
-*/
+ * ! 87. Custom Button avec le props children et TouchableOpacity
+ */
+
+
 import React, {useState} from "react";
 import { View,StyleSheet, TextInput, Button, FlatList,Modal } from "react-native";
+import ButtonComponent from "./ButtonComponent";
 
 const AddPoduct = ({submitHandler,displayModal,cancelNewProduct}) => {
 
@@ -231,16 +519,18 @@ const AddPoduct = ({submitHandler,displayModal,cancelNewProduct}) => {
             onChangeText={ inputHandler }
             value={product}
           />
-          <Button
-            title="valider"
-            onPress={ handleClick}
-            color='green'
-          />
-          <Button
-            title="Annuler"
-            onPress={ cancelNewProduct }
-            color='red'
-          />
+          <View style={styles.btnContainer}>
+              <ButtonComponent
+                onPress={ handleClick }
+                style={styles.btnBlue}
+              > Valider
+              </ButtonComponent>
+              <ButtonComponent
+                  onPress={ cancelNewProduct }
+                   style={styles.btnTomato}
+              >Annuler
+              </ButtonComponent>
+          </View>
         </View>
       </Modal>
     )
@@ -262,6 +552,23 @@ const styles = StyleSheet.create({
         fontSize:18,
         marginBottom: 9,
       },
+      btnContainer: {
+        flexDirection:"row",
+        justifyContent: 'space-between'
+      },
+      btnBlue:{
+        backgroundColor:'seagreen',
+        width:150,
+        borderRadius: 6
+      },
+      btnTomato:{
+        width:150,
+        borderRadius: 6
+      }
   })
 
 export default AddPoduct
+
+
+
+

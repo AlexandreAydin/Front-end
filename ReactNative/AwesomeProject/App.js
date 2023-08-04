@@ -2428,8 +2428,200 @@
 
 
 
+// /**
+// * ! 80.Afficher TextInput dans un Modal suite à onPress sur un bouton
+// */
+
+
+// import React, {useState} from "react";
+// import { 
+//   View,
+//   StyleSheet,
+//   FlatList,
+//   Modal,
+//   Text,
+//   Pressable,
+//   DismissKeyboard,
+//   Image,
+//   ImageBackground
+//  } from "react-native";
+// import Products from "./components/Product";
+// import AddPoduct from "./components/AddProduct";
+// import { Button } from "react-native";
+
+
+
+  
+// export default function App() {
+  
+//   const [myProducts, setMyProducts] = useState([]);
+//   const [showModal, setShowModal] = useState(true);
+//   const [displayModal, setDisplayModal] = useState(false);
+
+//   const submitHandler = (product) => {
+
+//   setDisplayModal(false);
+
+
+//   if(product.length > 1 ){
+//     const idString = Date.now().toString();
+//     setMyProducts(currentMyProducts => [{key: idString, name:product}, ...currentMyProducts] );
+//   }else {
+//     setShowModal(true)
+//   }
+
+// }
+
+
+//   const deleteProduct = (key) => {
+//     setMyProducts(currentMyProducts => {
+//       return currentMyProducts.filter(product=> product.key != key)
+//     } )
+//   }
+
+
+//   const cancelNewProduct =() => {
+//     setDisplayModal(false);
+//   }
+
+//     return(
+//         <ImageBackground
+//           style={styles.container}
+//           source={{uri:'https://media.istockphoto.com/id/1333785971/photo/blank-white-crumpled-and-creased-paper-poster-texture.webp?b=1&s=612x612&w=0&k=20&c=qn2siwq3SAwYXmPDUG1YEGdw9YVMDndvXD1U9bAnNJU='}}
+//           >
+
+//           <Modal
+//             visible={showModal}
+//             onRequestClose={() => setShowModal(false)}
+//             animationType="slide"
+//             transparent
+//           >
+//           <View style={styles.modalContainer}>
+//               <View style={styles.modalContent}>
+//                 <View style={styles.modalHeader}>
+//                   <Text style={styles.modalHeaderText}>OUPS!</Text>
+//                 </View>
+//                 <View style={styles.modalBody}>
+//                   <Image
+//                     // source={require('./assets/cross.png')}
+//                     source={{uri:'https://cdn.pixabay.com/photo/2013/07/12/13/50/road-sign-147409_640.png'}}
+//                     style= {styles.cross}
+//                   />
+//                   <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
+//                 </View>
+//                 <View style={styles.modalFooter}>
+//                   <Pressable 
+//                     style={styles.pressableBtnModal}
+//                     onPress={()=>setShowModal(false)}
+//                     >
+//                     <Text style={styles.modalBtn}>Ok</Text>
+//                   </Pressable>
+//                 </View>
+//               </View>
+
+//           </View>
+//           </Modal>
+//           <Button
+//             title="Nouveau produit"
+//             onPress={()=> setDisplayModal(true)}
+//           />
+//           <AddPoduct
+//             submitHandler={submitHandler}
+//             displayModal={displayModal}
+//             cancelNewProduct={cancelNewProduct}
+//             />
+
+//           <FlatList
+//             data={myProducts}
+//             renderItem={({item}) => (
+//               <Products 
+//                 name= {item.name}
+//                 idString={item.key}
+//                 deleteProduct={deleteProduct}
+//                 />)}
+//           />
+//         </ImageBackground>
+//     );
+//   }
+      
+
+// const styles = StyleSheet.create({
+//   container:{
+//     flex: 1,
+//     padding: 40,
+//     paddingTop:60,
+//   },
+//   modalContainer:{
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor:"rgba(0,0,0,0.2)"
+//   },
+//   modalContent:{
+//     backgroundColor:"#fff",
+//     width: "90%",
+//     height: 300,
+//     borderRadius:15,
+//     alignItems:"center",
+//   },
+//   modalHeader:{
+//     width:"100%",
+//     padding:16,
+//     alignItems:"center",
+//     borderTopLeftRadius: 15,
+//     borderTopRightRadius: 15,
+//     borderBottomWidth: 1,
+//     borderColor:'lightgray',
+//   },
+//   modalHeaderText:{
+//     color:"grey",
+//     fontSize:17,
+//   },
+//   modalBody:{
+//     flex: 1,
+//     width:"100%",
+//     alignItems:"center",
+//     justifyContent:"center",
+//   },
+//   modalBodyText:{
+//     fontSize:17
+//   },
+//   modalFooter:{
+   
+//     width:"100%",
+
+//   },
+//   pressableBtnModal:{
+//     backgroundColor:'#20b2aa',
+//     borderBottomLeftRadius:15,
+//     borderBottomRightRadius:15,
+//   },
+//   modalBtn:{
+//     fontSize:17,
+//     color:"#fff",
+//     textAlign:"center",
+//     padding:16,
+//   },
+//   cross:{
+//     width:90,
+//     height:90,
+//   }
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
-* ! 80.Afficher TextInput dans un Modal suite à onPress sur un bouton
+* ! 87. Custom Button avec le props children et TouchableOpacity
 */
 
 
@@ -2441,10 +2633,15 @@ import {
   Modal,
   Text,
   Pressable,
+  Image,
+  ImageBackground
  } from "react-native";
 import Products from "./components/Product";
 import AddPoduct from "./components/AddProduct";
-import { Button } from "bootstrap";
+import { Button } from "react-native";
+import BaseComponent from "./components/ButtonComponent";
+import ButtonComponent from "./components/ButtonComponent";
+
 
 
   
@@ -2481,60 +2678,73 @@ export default function App() {
   }
 
     return(
-      <View style={styles.container}>
+        <ImageBackground
+          style={styles.container}
+          source={{uri:'https://media.istockphoto.com/id/1333785971/photo/blank-white-crumpled-and-creased-paper-poster-texture.webp?b=1&s=612x612&w=0&k=20&c=qn2siwq3SAwYXmPDUG1YEGdw9YVMDndvXD1U9bAnNJU='}}
+          >
 
-        <Modal
-          visible={showModal}
-          onRequestClose={() => setShowModal(false)}
-          animationType="slide"
-          transparent
-        >
-         <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
-              <View style={styles.modalHeader}>
-                <Text style={styles.modalHeaderText}>OUPS!</Text>
+          <Modal
+            visible={showModal}
+            onRequestClose={() => setShowModal(false)}
+            animationType="slide"
+            transparent
+          >
+          <View style={styles.modalContainer}>
+              <View style={styles.modalContent}>
+                <View style={styles.modalHeader}>
+                  <Text style={styles.modalHeaderText}>OUPS!</Text>
+                </View>
+                <View style={styles.modalBody}>
+                  <Image
+                    // source={require('./assets/cross.png')}
+                    source={{uri:'https://cdn.pixabay.com/photo/2013/07/12/13/50/road-sign-147409_640.png'}}
+                    style= {styles.cross}
+                  />
+                  <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
+                </View>
+                <View style={styles.modalFooter}>
+                  <Pressable 
+                    style={styles.pressableBtnModal}
+                    onPress={()=>setShowModal(false)}
+                    >
+                    <Text style={styles.modalBtn}>Ok</Text>
+                  </Pressable>
+                </View>
               </View>
-              <View style={styles.modalBody}>
-                <Text style={styles.modalBodyText}>merci d'indiquer minimum 2 caractères</Text>
-              </View>
-              <View style={styles.modalFooter}>
-                <Pressable 
-                  style={styles.pressableBtnModal}
-                  onPress={()=>setShowModal(false)}
-                  >
-                  <Text style={styles.modalBtn}>Ok</Text>
-                </Pressable>
-              </View>
-            </View>
 
-         </View>
-        </Modal>
-        <Button
-          title='Nouveau produit'
-          onPress={()=> setDisplayModal('true')}
-        />
-        <AddPoduct
-          submitHandler={submitHandler}
-          displayModal={displayModal}
-          cancelNewProduct={cancelNewProduct}
+          </View>
+          </Modal>
+
+          <ButtonComponent
+             onPressHandler={()=> setDisplayModal(true)}
+             style={styles.addProductBtn}
+          >
+            Nouveau produit
+
+          </ButtonComponent>
+          <AddPoduct
+            submitHandler={submitHandler}
+            displayModal={displayModal}
+            cancelNewProduct={cancelNewProduct}
+            />
+
+          <FlatList
+            data={myProducts}
+            renderItem={({item}) => (
+              <Products 
+                name= {item.name}
+                idString={item.key}
+                deleteProduct={deleteProduct}
+                />)}
           />
-
-        <FlatList
-          data={myProducts}
-          renderItem={({item}) => (
-            <Products 
-              name= {item.name}
-              idString={item.key}
-              deleteProduct={deleteProduct}
-              />)}
-        />
-      </View>
+        </ImageBackground>
     );
   }
       
 
 const styles = StyleSheet.create({
   container:{
+    flex: 1,
     padding: 40,
     paddingTop:60,
   },
@@ -2547,7 +2757,7 @@ const styles = StyleSheet.create({
   modalContent:{
     backgroundColor:"#fff",
     width: "90%",
-    height: 250,
+    height: 300,
     borderRadius:15,
     alignItems:"center",
   },
@@ -2588,5 +2798,17 @@ const styles = StyleSheet.create({
     color:"#fff",
     textAlign:"center",
     padding:16,
+  },
+  cross:{
+    width:90,
+    height:90,
+  },
+  addProductBtn:{
+    backgroundColor:"darkred",
+    padding:20,
+    borderRadius:30,
+    borderWidth:3,
+    borderColor:"white",
   }
 });
+
