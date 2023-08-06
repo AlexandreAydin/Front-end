@@ -18,7 +18,8 @@ const Landing = ({navigation}) => {
             title={item.title}
             price={item.price}
             viewDetails={() => navigation.navigate('Details',{
-              courseId:item.id
+              courseId:item.id,
+              title:item.title
             })}
             onAddToCart={() => navigation.navigate('Cart')}
           />
@@ -27,8 +28,6 @@ const Landing = ({navigation}) => {
     ) 
   }
   return <EmptyMsg text="Pas de cour afficher"/>
-  
-
 }
 
 const styles = StyleSheet.create({})
