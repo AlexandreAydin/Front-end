@@ -1,10 +1,18 @@
 import React from 'react'
 import { Text, StyleSheet, View, FlatList } from 'react-native'
-import { UseSelector, useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import CourseItem from '../components/CourseItem'
 import EmptyMsg from '../components/EmptyMsg'
+import { addToCart } from '../redux/actions/ActionAddToCart'
 
 const Landing = ({navigation}) => {
+
+  const dispatch = useDispatch();
+
+  const handeleAddToCart = (course) => {
+    dispatch(addToCart(course));
+    alert ('Formation ajoutée au panier')
+  }
 
   const existingCourses = useSelector(state => state.courses.existingCourses)
 
@@ -21,7 +29,7 @@ const Landing = ({navigation}) => {
               courseId:item.id,
               title:item.title
             })}
-            onAddToCart={() => navigation.navigate('Cart')}
+            onAddToCart={() => handeleAddToCart(item)}
           />
         )}
       />
