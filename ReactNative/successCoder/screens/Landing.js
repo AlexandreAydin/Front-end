@@ -16,10 +16,12 @@ const Landing = ({navigation}) => {
 
   const existingCourses = useSelector(state => state.courses.existingCourses)
 
+  const coursesToDisplay = existingCourses.filter(course => course.selected === false);
+
   if (existingCourses.length) {
     return(
       <FlatList
-        data={existingCourses}
+        data={coursesToDisplay}
         renderItem={({item})=> (
           <CourseItem
             image={item.image}
