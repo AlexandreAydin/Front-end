@@ -1,6 +1,5 @@
 import COURSES from "../../data/testData";
-import { ADD_TO_CART } from "../constants";
-
+import { ADD_TO_CART,REMOVE_COURSE_CART } from "../constants";
 
 const initialState = {
     existingCourses: COURSES
@@ -21,6 +20,17 @@ const reducerCourses = (state = initialState, action) => {
             ...state,
             existingCourses: copyExistingCourses
            }
+
+
+           case REMOVE_COURSE_CART: 
+                const indexCourseToDeleteFromCart = state.existingCourses.findIndex(course => course.id === action.prodId);
+                const copyExistingCoursesRemove= [...state.existingCourses]
+                copyExistingCoursesRemove[indexCourseToDeleteFromCart].selected =false;
+            return {
+                ...state,
+                existingCourses: copyExistingCoursesRemove
+                }
+            
 
         default: 
             return state;

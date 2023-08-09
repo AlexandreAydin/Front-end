@@ -1,12 +1,15 @@
 import React from 'react'
 import { Text, StyleSheet, View, FlatList, TouchableOpacity } from 'react-native'
-import { UseSelector, useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import EmptyMsg from '../components/EmptyMsg'
 import CoursesInCart from '../components/CoursesInCart'
 import globalStyles from '../Styles/globalStyles'
+import { removeCourseCart } from '../redux/actions/RemoveCourseCart'
 
 
 const Cart = () => {
+
+  dispatch= useDispatch();
 
   const cartCourses = useSelector (state => state.cart.cartCourses); 
   const total =  useSelector (state => state.cart.total);
@@ -25,7 +28,7 @@ const Cart = () => {
                     <CoursesInCart 
                       title={item.title}
                       price={item.price}
-                      onDelete= {() => alert('effacer le cours')}
+                      onDelete= {() => dispatch(removeCourseCart(item.id))}
                     />
                   )}
                 />
