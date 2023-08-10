@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, FlatList, TouchableOpacity } from 'react-native
 import { useSelector, useDispatch } from 'react-redux'
 import EmptyMsg from '../components/EmptyMsg'
 import CoursesInCart from '../components/CoursesInCart'
+import { addPayment} from '../redux/actions/actionPayment'
 import globalStyles from '../Styles/globalStyles'
 import { removeCourseCart } from '../redux/actions/RemoveCourseCart'
 
@@ -13,6 +14,11 @@ const Cart = () => {
 
   const cartCourses = useSelector (state => state.cart.cartCourses); 
   const total =  useSelector (state => state.cart.total);
+
+  const handlepayment = (cartCourses,total) => {
+    dispatch(addPayment(cartCourses,total));
+    alert ('Paiement effectué avec succées')
+  }
 
 
     return(
@@ -43,7 +49,7 @@ const Cart = () => {
                 </View>
                 
                 <TouchableOpacity
-                  onPress={() => alert ('payer')}
+                  onPress={() => handlepayment(cartCourses,total)}
                 >
                   <View style={styles.btnAddPayement}>
                     <Text style={styles.btnAddPayementText}>Payer</Text>

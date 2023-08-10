@@ -4,7 +4,6 @@ import {HeaderButtons, Item} from 'react-navigation-header-buttons'
 import CustomHeaderIcon from "../components/CustomHeaderIcon";
 import Landing from "../screens/Landing";
 import CourseInfos from "../screens/CourseInfos";
-import Cart from "../screens/Cart";
 import globalStyles from "../Styles/globalStyles";
 
 const CoursesStackNavigator= createStackNavigator();
@@ -41,10 +40,6 @@ export const CoursesNavigator = () => {
                         title:route.params.title 
                     }
                 ) }
-            />
-             <CoursesStackNavigator.Screen
-                name="Cart"
-                component={Cart}
             />
         </CoursesStackNavigator.Navigator> 
     )
