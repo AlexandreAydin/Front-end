@@ -24,6 +24,15 @@ export const CoursesNavigator = () => {
                                 onPress={() => navigation.navigate('Cart')}
                             />
                         </HeaderButtons>
+                    ),
+                    headerLeft: () => (
+                        <HeaderButtons HeaderButtonComponent={CustomHeaderIcon}>
+                            <Item
+                                title='Menu'
+                                iconName="menu"
+                                onPress={() => navigation.openDrawer()}
+                            />
+                        </HeaderButtons>
                     )
                 }
             )}
@@ -31,6 +40,7 @@ export const CoursesNavigator = () => {
             <CoursesStackNavigator.Screen
                 name="Landing"
                 component={Landing}
+                options={{title: 'Catalogue'}}
             />
             <CoursesStackNavigator.Screen
                 name="Details"

@@ -8,7 +8,7 @@ const COURSES = [
     image: 'https://cdn.pixabay.com/photo/2023/06/05/13/56/cat-8042342_1280.jpg',
     price: 99.99,
     selected: false,
-    instructorId: '1'
+    instructorId: '2'
   }, 
   {
     id: '2',
@@ -26,7 +26,7 @@ const COURSES = [
     image: 'https://media.istockphoto.com/id/1329069809/fr/photo/chat-brun-et-blanc-avec-des-yeux-jaunes-sur-le-dos-regarde-la-cam%C3%A9ra-gros-plan.jpg?s=612x612&w=0&k=20&c=wF1G_kGbPKMUqWFyKqsv4nsv945-OLb5jhaDCxg1YnA=',
     price: 29.49,
     selected: false,
-    instructorId: '1'
+    instructorId: '5'
   }, 
   {
     id: '4',

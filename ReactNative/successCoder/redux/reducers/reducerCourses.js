@@ -1,8 +1,11 @@
 import COURSES from "../../data/testData";
-import { ADD_TO_CART,REMOVE_COURSE_CART } from "../constants";
+import { ADD_TO_CART,REMOVE_COURSE_CART,DELETE_COURSE } from "../constants";
+
 
 const initialState = {
-    existingCourses: COURSES
+    existingCourses: COURSES,
+    loggedInmemberCourses: COURSES.filter(course => course.instructorId ==="1")
+
 }
 
 const reducerCourses = (state = initialState, action) => {
@@ -18,19 +21,28 @@ const reducerCourses = (state = initialState, action) => {
 
            return {
             ...state,
-            existingCourses: copyExistingCourses
+            existingCourses: copyExistingCourses,
+            loggedInmemberCourses: state.loggedInmemberCourses
            }
 
 
-           case REMOVE_COURSE_CART: 
-                const indexCourseToDeleteFromCart = state.existingCourses.findIndex(course => course.id === action.prodId);
-                const copyExistingCoursesRemove= [...state.existingCourses]
-                copyExistingCoursesRemove[indexCourseToDeleteFromCart].selected =false;
+        case REMOVE_COURSE_CART: 
+            const indexCourseToDeleteFromCart = state.existingCourses.findIndex(course => course.id === action.prodId);
+            const copyExistingCoursesRemove= [...state.existingCourses]
+            copyExistingCoursesRemove[indexCourseToDeleteFromCart].selected =false;
+
             return {
                 ...state,
-                existingCourses: copyExistingCoursesRemove
+                existingCourses: copyExistingCoursesRemove,
+                loggedInmemberCourses: state.loggedInmemberCourses
                 }
             
+        case DELETE_COURSE : 
+                return {
+                    ...state,
+                    existingCourses:state.existingCourses.filter(course => course.id != action.courseId),
+                    loggedInmemberCourses: stateloggedInmemberCourses.filter(course => course.id != action.courseId)
+                }
 
         default: 
             return state;
