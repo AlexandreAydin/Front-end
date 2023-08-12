@@ -1,5 +1,13 @@
 import COURSES from "../../data/testData";
-import { ADD_TO_CART,REMOVE_COURSE_CART,DELETE_COURSE } from "../constants";
+import CourseModel from "../../data/CourseModel";
+import { createCourse } from "../actions/ActionCreateCourse";
+import {
+            ADD_TO_CART,
+            REMOVE_COURSE_CART,
+            DELETE_COURSE ,
+            EDIT_COURSE,
+            CREATE_COURSE
+        } from "../constants";
 
 
 const initialState = {
@@ -41,8 +49,53 @@ const reducerCourses = (state = initialState, action) => {
                 return {
                     ...state,
                     existingCourses:state.existingCourses.filter(course => course.id != action.courseId),
-                    loggedInmemberCourses: stateloggedInmemberCourses.filter(course => course.id != action.courseId)
+                    loggedInmemberCourses: state.loggedInmemberCourses.filter(course => course.id != action.courseId)
                 }
+        
+        case EDIT_COURSE: 
+                const idCourse = action.courseId;
+                const indexCourseToUptade =  state.loggedInmemberCourses.findIndex (course => course.id === idCourse );
+
+                new CourseModel(
+                    idCourse, 
+                    action.updatedCourse.title,
+                    action.updatedCourse.descrion,
+                    action.updatedCourse.image,
+                    state.loggedInmemberCourses[indexCourseToUptade].price,
+                    state.loggedInmemberCourses[indexCourseToUptade].selected,
+                    state.loggedInmemberCourses[indexCourseToUptade].instructorId,
+                )
+
+                const newloggedInmemberCourses = [...state.loggedInmemberCourses];
+                newloggedInmemberCourses[indexCourseToUptade] = updatedCourse
+
+                const indexExistingCourses = state.existingCourses.findIndex(course =>course.id === idCourse)
+                const newExistingCourses = [...state.existingCourses];
+                newExistingCourses [indexExistingCourses]= updatedCourse
+
+                return {
+                    ...state,
+                    existingCourses:newExistingCourses,
+                    loggedInmemberCourses:newloggedInmemberCourses  
+                }
+        
+        case CREATE_COURSE: 
+                const newCourse =   new CourseModel(
+                    Date.now().toString(),
+                    action.newCourse.title,
+                    action.newCourse.description,
+                    action.newCourse.timage,
+                    action.newCourse.price,
+                    false,
+                    "1"
+                );
+
+                return {
+                    ...state,
+                    existingCourses: state.existingCourses.concat(newCourse),
+                    loggedInmemberCourses: state.loggedInmemberCourses.concat(newCourse) 
+                }
+
 
         default: 
             return state;
