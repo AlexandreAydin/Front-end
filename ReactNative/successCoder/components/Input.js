@@ -4,15 +4,13 @@ import globalStyles from '../Styles/globalStyles';
 
 const Input = () => {
     return(
-        <View style={styles.formcontrol}>
-            <Text style={styles.label}> Titre </Text>
+        <View style={styles.formControl}>
+            <Text style={styles.label}> {props.label} </Text>
             <TextInput
-              value={title}
-              onChangeText={text =>setTitle(text)}
+              {...props}
+              value={props.value}
+              onChangeText={props.onKeyStroke}
               style= {styles.input}
-              keyboardType='decimal-pad'
-              multiline
-              numberOfLines={5}
             />
           </View>
     )
